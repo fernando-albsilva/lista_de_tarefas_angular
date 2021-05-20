@@ -1,0 +1,35 @@
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.width-100{
+    width:100%; 
+}
+.width-80{
+    width:80%; 
+}
+.height-80{
+    height: 80%;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-title{
+    color: #5C6BBF;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card-text{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #5C6BBF;
+}

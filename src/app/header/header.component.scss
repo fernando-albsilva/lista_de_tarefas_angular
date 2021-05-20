@@ -1,0 +1,19 @@
+
+.header-index{
+    position: relative;
+    height: 80px;
+    width: 100%;
+    background-color: #5C6BC0;
+    color:#FFF;
+    font-family: Roboto;
+    box-shadow: 0px 4px 8px #383838;
+    display: flex;
+    flex-direction: row;
+     z-index: 2;
+    
+    .logo-img{
+        font-size: 30px;
+        margin-bottom: 14px;
+        margin-right: 15px;
+    }
+}

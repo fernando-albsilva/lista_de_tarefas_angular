@@ -1,0 +1,47 @@
+<mat-sidenav-container class="sidenav-container">
+
+    <mat-sidenav class="side-nav" mode="side" opened>
+        <div class="side-menu-button-container">
+            <mat-icon class="icon-side-menu">help_outline</mat-icon>
+            <button mat-flat-button class="side-menu-button">Primary</button>
+        </div>
+        <div class="side-menu-button-container">
+            <mat-icon class="icon-side-menu">list_alt</mat-icon>
+            <button class="side-menu-button" mat-flat-button>Relatório</button>
+        </div>
+        <div class="side-menu-button-container">
+            <mat-icon class="icon-side-menu">print</mat-icon>
+            <button class="side-menu-button" mat-flat-button>Imprimir</button>
+        </div>
+    </mat-sidenav>
+
+
+    <mat-sidenav-content class="content-container">
+
+        <div class="first-menu-row-card-container">
+            <app-card-header class="card-header-width" [icone]="icone_card_one" [info]="info_pai_card_1">
+            </app-card-header>
+            <app-card-header class="card-header-width" [icone]="icone_card_two" [info]="info_pai_card_2">
+            </app-card-header>
+            <app-card-header class="card-header-width" [icone]="icone_card_three" [info]="info_pai_card_3"
+                [classe_green_bg]="info_classe_green_bg"></app-card-header>
+
+        </div>
+
+        <div class="second-menu-row-card-container">
+            <app-card-adiciona-tarefa class="card-second-row-width flex-column"></app-card-adiciona-tarefa>
+            <app-card-informacoes class="card-second-row-width flex-column"></app-card-informacoes>
+            <app-card-acoes class="card-second-row-width flex-column"></app-card-acoes>
+
+        </div>
+
+        <div class="second-menu-row-card-container">
+            <app-lista-de-tarefas class="width-63-3-heigt-250"></app-lista-de-tarefas>
+            <app-card-acoes class="card-second-row-width flex-column"></app-card-acoes>
+
+        </div>
+
+        
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

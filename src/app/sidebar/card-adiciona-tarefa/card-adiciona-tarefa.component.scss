@@ -1,0 +1,60 @@
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+.width-100{
+    width:100%;
+   
+}
+.height-80{
+    height: 80%!important;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.card-title{
+    color:#5C6BBF;
+    font-size: 1rem;
+    font-weight: 500;
+}
+.form-width{
+    width: 100%;
+    height: 100%;
+    
+}
+.text-color-inut{
+    color:#5C6BC0;
+}
+.input-nome-tarefa-width{
+    width: 60%;
+    
+}
+
+.input-prioridade-tarefa-width{
+    width: 20%;
+}
+.input-descricao-tarefa-width{
+    width: 70%;
+}
+.input-icone-tarefa-width{
+    width: 10%;
+}
+
+.icone{
+    transform: scale(1.5);
+    color: #5C6BBF;
+}
+
+.mat-form-field-appearance-legacy.mat-form-field-underline{
+    background-color: rgba(214, 0, 0, 0.42);
+}
+
+// .mat-form-field-appearance-legacy .mat-form-field-underline
