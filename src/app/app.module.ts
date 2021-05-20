@@ -21,6 +21,7 @@ import { CardAdicionaTarefaComponent } from './sidebar/card-adiciona-tarefa/card
 import { CardInformacoesComponent } from './sidebar/card-informacoes/card-informacoes.component';
 import { CardAcoesComponent } from './sidebar/card-acoes/card-acoes.component';
 import { ListaDeTarefasComponent } from './sidebar/lista-de-tarefas/lista-de-tarefas.component';
+import { TabelaTarefaAdicionadaComponent } from './sidebar/tabela-tarefa-adicionada/tabela-tarefa-adicionada.component';
 
 
 
@@ -35,7 +36,8 @@ import { ListaDeTarefasComponent } from './sidebar/lista-de-tarefas/lista-de-tar
     CardAdicionaTarefaComponent,
     CardInformacoesComponent,
     CardAcoesComponent,
-    ListaDeTarefasComponent
+    ListaDeTarefasComponent,
+    TabelaTarefaAdicionadaComponent
   ],
   imports: [
     BrowserModule,
