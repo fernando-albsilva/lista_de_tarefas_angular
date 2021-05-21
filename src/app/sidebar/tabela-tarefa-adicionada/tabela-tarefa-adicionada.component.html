@@ -19,18 +19,6 @@
         <td mat-cell *matCellDef="let element"> {{element.descricao}} </td>
       </ng-container>
   
-      <!-- iniciar Column -->
-      <ng-container matColumnDef="iniciar">
-        <th mat-header-cell *matHeaderCellDef> Iniciar </th>
-        <td mat-cell *matCellDef="let element"> {{element.iniciar}} </td>
-      </ng-container>
-
-        <!-- iniciar Column -->
-        <ng-container matColumnDef="pausar">
-            <th mat-header-cell *matHeaderCellDef> Pausar </th>
-            <td mat-cell *matCellDef="let element"> {{element.pausar}} </td>
-          </ng-container>
-  
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
