@@ -52,6 +52,10 @@ tr{
   transform: scale(0.8);
   cursor: pointer;
 }
+.icone:hover{
+  transform: scale(1.0);
+  text-shadow: 2px 2px 2px #b0b0b0;
+}
 
 .green{
 color:#4DB6AC;

@@ -28,10 +28,12 @@
     height: 28px;
     width: 24px;
 }
+
 mat-icon{
     height: 28px;
-    width: 24px!important;
+    width: 28px!important;
 }
+
 .card-title{
     color:#5C6BBF;
     font-size: 1rem;
@@ -67,10 +69,13 @@ mat-icon{
 .icone:hover{
     transform: scale(1.8);
     cursor: pointer;
+    text-shadow: 2px 2px 2px #b0b0b0;
 }
+
 
 .mat-form-field-appearance-legacy.mat-form-field-underline{
     background-color: rgba(214, 0, 0, 0.42);
 }
 
 // .mat-form-field-appearance-legacy .mat-form-field-underline
+

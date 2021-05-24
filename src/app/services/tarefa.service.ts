@@ -22,7 +22,7 @@ export class TarefaService{
     }
 
     adicionaTarefa(tarefa:TarefaModel){
-        console.log(this._listaDeTarefas);
+        
         this._listaDeTarefas.push({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice:("99") })
         console.log("LISTA ATUALIZADA");
         console.log(this._listaDeTarefas);
