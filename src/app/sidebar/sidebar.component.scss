@@ -62,11 +62,13 @@
 // .mat-drawer-content.mat-sidenav-content.content-container{
 //     overflow: none!important;
 // }
+
 .content-container{
     min-width: 1000px;
     width: calc(100% - 200px);
     overflow: unset;
     overflow-x: unset;
+   
     
 }
 .card-header-container{

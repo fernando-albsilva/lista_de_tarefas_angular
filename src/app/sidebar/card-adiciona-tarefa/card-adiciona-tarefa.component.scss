@@ -20,6 +20,18 @@
     justify-content: space-around;
 }
 
+.btn-submit{
+    justify-content: center;
+    background-color: transparent;
+    padding:0px;
+    border:none;
+    height: 28px;
+    width: 24px;
+}
+mat-icon{
+    height: 28px;
+    width: 24px!important;
+}
 .card-title{
     color:#5C6BBF;
     font-size: 1rem;
@@ -51,6 +63,10 @@
 .icone{
     transform: scale(1.5);
     color: #5C6BBF;
+}
+.icone:hover{
+    transform: scale(1.8);
+    cursor: pointer;
 }
 
 .mat-form-field-appearance-legacy.mat-form-field-underline{

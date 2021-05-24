@@ -1,8 +1,6 @@
-import { AfterViewInit, Component, OnInit,ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatTableDataSource} from '@angular/material/table';
-import { TarefaModel } from 'src/app/model/TarefaModel';
-
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatTableDataSource } from '@angular/material/table';
+import { TarefaService } from '../../services/tarefa.service'
 
 @Component({
   selector: 'app-tabela-tarefa-adicionada',
@@ -12,38 +10,43 @@ import { TarefaModel } from 'src/app/model/TarefaModel';
 export class TabelaTarefaAdicionadaComponent implements AfterViewInit  {
   
   dataTable:any[] = [];
-  tarefas: TarefaModel[] = [];
-
-
+  
+  
   displayedColumns: string[] = ['nome_tarefa', 'prioridade', 'descricao'];
   dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
-  constructor() {
+
+  listaDeTarefas:any[];
+
+  constructor(tarefaService : TarefaService) {
+   
+    this.listaDeTarefas=tarefaService.listaDeTarefas;
+    
      
-    for (let index = 0; index < 30; index++) {
-      let tarefa: TarefaModel = new TarefaModel(); 
-      tarefa.nomeTarefa = "tarefa " + index ;
-      tarefa.prioridade = index.toString();
-      tarefa.descricao = " descrição da tarefa " + index;
-      this.tarefas.push(tarefa);
-      //tarefas.push( {nome_tarefa: 1, prioridade: 'Hydrogen', descricao: 1.0079, iniciar: 'H', pausar:'p'});  
-    }
-    this.tarefas.map((elemento)=>{
-      
-      this.dataTable.push( {nome_tarefa:elemento.nomeTarefa, prioridade:elemento.prioridade, descricao:elemento.descricao} );
+     console.log("datatable");
+     console.log(this.dataTable);
 
-      // console.log(this.dataTable);
-      // return ({elemento._nomeTarefa,elemento.prioridade, elemento.descricao});
+     this.listaDeTarefas.map((elemento) => {
+        this.dataTable.push(elemento);
+     });
 
-    });
-      console.log(this.dataTable);
-    // console.log(this.tarefas);
-
+    //  this.listaDeTarefas=tarefaService.verifica.subscribe( x =>{
+    //       this.listaDeTarefas.push(x);
+    //  });
+   
    }
   ngAfterViewInit() {
-    //  this.dataSource.paginator = this.paginator;
+     
+  
   }
 
+  clicouNalinha($event:Event, el:any){
+    // alert("clicou"+$event.target);
+    // console.log($event.currentTarget);
+    // let elemento = $event;
+    console.log($event);
+    console.log(el);
+    
+  }
 
 }
 

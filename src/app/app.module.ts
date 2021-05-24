@@ -5,8 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule }   from '@angular/forms';
 
 
 
@@ -22,6 +26,8 @@ import { CardInformacoesComponent } from './sidebar/card-informacoes/card-inform
 import { CardAcoesComponent } from './sidebar/card-acoes/card-acoes.component';
 import { ListaDeTarefasComponent } from './sidebar/lista-de-tarefas/lista-de-tarefas.component';
 import { TabelaTarefaAdicionadaComponent } from './sidebar/tabela-tarefa-adicionada/tabela-tarefa-adicionada.component';
+import { TarefaService } from './services/tarefa.service';
+import { TarefaModel } from './model/TarefaModel';
 
 
 
@@ -48,13 +54,20 @@ import { TabelaTarefaAdicionadaComponent } from './sidebar/tabela-tarefa-adicion
     MatSidenavModule,
     MatButtonModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule,
+    MatTooltipModule,
+    MatFormFieldModule,
+    FormsModule
     
 
   
 
   ],
-  providers: [],
+  providers: [
+    TarefaService,
+    TarefaModel
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
