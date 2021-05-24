@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { FormGroup,FormBuilder} from '@angular/forms';
 import { TarefaModel } from 'src/app/model/TarefaModel';
 import { TarefaService } from 'src/app/services/tarefa.service';
@@ -21,23 +22,30 @@ export class CardAdicionaTarefaComponent implements OnInit {
   // submitted = false;
   // tarefaForm: FormGroup ;
   // formBuilder: FormBuilder = new FormBuilder();
+  tarefaForm: FormGroup;
 
   constructor(
     private tarefaService:TarefaService,
     private tarefa:TarefaModel,
-    private formBuilder:FormBuilder,
-    public tarefaForm:FormGroup
+    private formBuilder:FormBuilder
     ) {
 
-
+      this.tarefaForm = this.formBuilder.group({
+          nomeTarefa:['', Validators.required],
+          prioridadeTarefa:['', Validators.required],
+          descricaoTarefa:['',Validators.required]
+      });
+      // this.tarefaForm({
+      //   nomeTarefa:[],
+      //   prioridade:[],
+      //   tarefaDescricao:[]
+      // });
     
     // console.log(this.tarefa.nomeTarefa);
    }
 
   ngOnInit(): void {
-    // this.tarefaForm = this.formBuilder.group({
-
-    // });
+    
   }
 
   // adicionaTarefa(){

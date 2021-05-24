@@ -1,4 +1,4 @@
-<form class="form-width flex-column height-80"  >
+<form [formGroup]="tarefaForm" class="form-width flex-column height-80"  >
     <div class>
         <p class="card-title flex-row">Adicionar Tarefa</p>
     </div>
@@ -7,18 +7,22 @@
 
         <mat-form-field class="input-nome-tarefa-width">
             <mat-label class="text-color-inut">Nome Tarefa:</mat-label>
-            <input 
-            matInput
-            placeholder="Ex. Realizar cálculo "
-            name="nomeTarefa">
+            <input
+                formControlName="nomeTarefa" 
+                matInput
+                placeholder="Ex. Realizar cálculo "
+                name="nomeTarefa"
+            >
         </mat-form-field>
 
         <mat-form-field class="input-prioridade-tarefa-width">
             <mat-label class="text-color-inut">Prioridade:</mat-label>
             <input
-            matInput
-            name="prioridade"
-            placeholder="Ex. 1" >
+                formControlName="prioridadeTarefa"
+                matInput
+                name="prioridadeTarefa"
+                placeholder="Ex. 1" 
+            >
 
         </mat-form-field>
 
@@ -28,9 +32,11 @@
         <mat-form-field class="input-descricao-tarefa-width">
             <mat-label class="text-color-inut">Descrição:</mat-label>
             <input
-            matInput
-            placeholder="Ex. preencher campos das ... "
-            name="descricao"  >
+                formControlName="descricaoTarefa"
+                matInput
+                placeholder="Ex. preencher campos das ... "
+                name="descricaoTarefa"             
+            >
         </mat-form-field>
         
             <button type="submit" class="flex-row btn-submit"> 
