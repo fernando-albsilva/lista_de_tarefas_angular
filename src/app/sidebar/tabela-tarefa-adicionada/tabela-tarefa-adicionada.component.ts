@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import {  Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { TarefaService } from '../../services/tarefa.service'
 
@@ -7,37 +7,49 @@ import { TarefaService } from '../../services/tarefa.service'
   templateUrl: './tabela-tarefa-adicionada.component.html',
   styleUrls: ['./tabela-tarefa-adicionada.component.scss']
 })
-export class TabelaTarefaAdicionadaComponent implements AfterViewInit  {
+export class TabelaTarefaAdicionadaComponent implements OnInit  {
   
   dataTable:any[] = [];
   
   
   displayedColumns: string[] = ['nome_tarefa', 'prioridade', 'descricao'];
-  dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
+  dataSource:any = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
 
   listaDeTarefas:any[];
-
-  constructor(tarefaService : TarefaService) {
+  
+  teste:any;
+  constructor(private tarefaService : TarefaService ) {
    
     this.listaDeTarefas=tarefaService.listaDeTarefas;
     
      
      console.log("datatable");
      console.log(this.dataTable);
-
+      
      this.listaDeTarefas.map((elemento) => {
         this.dataTable.push(elemento);
      });
-
-    //  this.listaDeTarefas=tarefaService.verifica.subscribe( x =>{
-    //       this.listaDeTarefas.push(x);
-    //  });
    
    }
-  ngAfterViewInit() {
-     
-  
-  }
+   
+   ngOnInit(){
+     this.tarefaService.emitirTarefaAdicionada.subscribe(
+        tarefaCriada => {
+          this.recarregaLista(tarefaCriada);
+          console.log("transmitida:");
+          console.log(tarefaCriada);
+        }
+     );
+   }
+
+   recarregaLista(tarefaCriada:any){
+    this.dataTable.push(tarefaCriada);
+    this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
+    
+    console.log("dataTable");
+    console.log(this.dataTable);
+   }
+
 
   clicouNalinha($event:Event, el:any){
     // alert("clicou"+$event.target);
@@ -47,6 +59,7 @@ export class TabelaTarefaAdicionadaComponent implements AfterViewInit  {
     console.log(el);
     
   }
+
 
 }
 

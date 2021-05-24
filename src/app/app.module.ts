@@ -12,6 +12,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormBuilder, FormsModule, FormGroup }   from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EventEmitter } from '@angular/core';
 
 
 
@@ -60,7 +62,8 @@ import { TarefaModel } from './model/TarefaModel';
     MatTooltipModule,
     MatFormFieldModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSnackBarModule
     
 
   
