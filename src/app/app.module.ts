@@ -10,7 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormsModule }   from '@angular/forms';
+import { FormBuilder, FormsModule, FormGroup }   from '@angular/forms';
 
 
 
@@ -59,14 +59,14 @@ import { TarefaModel } from './model/TarefaModel';
     MatTooltipModule,
     MatFormFieldModule,
     FormsModule
-    
 
   
 
   ],
   providers: [
     TarefaService,
-    TarefaModel
+    TarefaModel,
+    FormBuilder
   ],
   bootstrap: [AppComponent]
 })
