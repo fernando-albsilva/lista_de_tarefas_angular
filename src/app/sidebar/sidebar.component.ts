@@ -21,8 +21,7 @@ export class SideBarComponent implements OnInit{
     tarefaAtiva: string = "0";
     info_pai_card_3: string[] = [];
     info_classe_green_bg: string[] = [];
-    _reload: boolean= true;
-    
+  
     constructor(private tarefaService:TarefaService) {  
         // this.tarefaService.emitirTarefaPendente.subscribe(quantidadeTarefa => {
         //     console.log("recebeu tarefa");

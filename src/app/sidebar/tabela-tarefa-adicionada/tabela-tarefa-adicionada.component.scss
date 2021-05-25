@@ -3,6 +3,16 @@ table {
     // height: calc();
     
   }
+  .flex-column{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+.width-100{
+  width: 100%;
+}
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -47,6 +57,16 @@ tr{
     color:#5c6bbf!important;
   }
 }
+.modal-info{
+  position: absolute;
+  top: 30%;
+  right: 40%;
+  height: 300px;
+  width: 400px;
+  box-shadow: 0px 4px 20px 2px #383838;
+  z-index: 3;
+  background-color: #fafafa;
+}
 
 .icone{
   transform: scale(0.8);
@@ -56,6 +76,7 @@ tr{
   transform: scale(1.0);
   text-shadow: 2px 2px 2px #b0b0b0;
 }
+
 
 .green{
 color:#4DB6AC;

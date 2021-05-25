@@ -63,6 +63,6 @@ export class TarefaService{
          TarefaService._listaDeTarefas =  this.listaDeTarefas.filter( (el:any) =>{
             return el.indice !== indice;
         } );
-  
+        this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
     }
 }
