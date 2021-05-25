@@ -50,20 +50,20 @@ export class CardAdicionaTarefaComponent implements OnInit {
 
    onSubmit(){
    
-    console.log(this.tarefaService._listaDeTarefas);
+    // console.log(this.tarefaService._listaDeTarefas);
     this.tarefa.nomeTarefa=this.tarefaForm.value.nomeTarefa;
     this.tarefa.prioridade=this.tarefaForm.value.prioridadeTarefa;
     this.tarefa.descricao=this.tarefaForm.value.descricaoTarefa;
     if((this.tarefa.nomeTarefa !== '') && (this.tarefa.prioridade !== '') && (this.tarefa.descricao !== '') )
     {
-      console.log("objeto pronto");
+      // console.log("objeto pronto");
      setTimeout( ()=> {
         this.tarefaService.adicionaTarefa(this.tarefa);
         this.tarefa.nomeTarefa='';
         this.tarefa.prioridade='';
         this.tarefa.descricao='';
 
-     },2000);
+     },100);
     }
     // this.tarefa.nomeTarefa='';
     // this.tarefa.prioridade='';

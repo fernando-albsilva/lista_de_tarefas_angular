@@ -10,43 +10,57 @@ export class TarefaService{
 
     emitirTarefaAdicionada = new EventEmitter<any>();
 
-    _listaDeTarefas:any[]=[];
+    private static _tarefaId:string='0';
+    private static _listaDeTarefas:any[]=[];
 
 
     
-    constructor(private snackBar: MatSnackBar){
-        // for (let index = 0; index < 3; index++) {
-            
-        //     this._listaDeTarefas.push( {nome_tarefa: ("tarefa "+index) , prioridade: (""+index)  , descricao: ("descrição da tarefa "+index), indice:(index*2) } );
-            
-        //   }
-    }
+    constructor(private snackBar: MatSnackBar){  }
 
     get listaDeTarefas() : any[]{
         
-        return this._listaDeTarefas;
+        return TarefaService._listaDeTarefas;
+    }
+    set listaDeTarefas(listaDeTarefa:any[]) {
+        TarefaService._listaDeTarefas = listaDeTarefa;
     }
 
     adicionaTarefa(tarefa:TarefaModel){
         
-        this._listaDeTarefas.push({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice:("99") })
-        this.emitirTarefaAdicionada.emit({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice:("99") })
-        console.log("LISTA ATUALIZADA");
-        console.log(this._listaDeTarefas);
+        TarefaService._listaDeTarefas.push({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice:(this.adicionaTarefaId()) })
+        this.emitirTarefaAdicionada.emit({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice: TarefaService._tarefaId })
+        // console.log("LISTA ATUALIZADA");
+        // console.log(this._listaDeTarefas);
         this.mostraMensagem();
         this.verifica();
     }
 
     verifica(){
-        return this._listaDeTarefas;
+        return TarefaService._listaDeTarefas;
     }
 
+   
     mostraMensagem():void {  
 
         this.snackBar.open('Tarefa adicionada com sucesso!','',{
-            duration:3000,
+            duration:2000,
             horizontalPosition: "center",
             verticalPosition: "bottom"
         });
+    }
+
+    adicionaTarefaId(){
+        let indice:number =   parseInt(TarefaService._tarefaId);
+        indice ++;
+        TarefaService._tarefaId=indice.toString();
+        return TarefaService._tarefaId;
+    }
+
+    deleteTarefa(indice:string){
+        // console.log(this._listaDeTarefas);
+         TarefaService._listaDeTarefas =  this.listaDeTarefas.filter( (el:any) =>{
+            return el.indice !== indice;
+        } );
+        // console.log(this.listaDeTarefas);
     }
 }

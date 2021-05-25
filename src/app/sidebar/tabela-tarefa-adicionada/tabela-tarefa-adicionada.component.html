@@ -25,7 +25,7 @@
             <mat-icon class="icone material-icons-outlined yellow" matTooltip="Pausar Tarefa">pause</mat-icon>
             <mat-icon class="icone material-icons-outlined orange" matTooltip="Editar Tarefa">edit</mat-icon>
             <mat-icon class="icone material-icons-outlined purple" matTooltip="Finalizar Tarefa">sports_score</mat-icon>
-            <mat-icon class="icone material-icons-outlined red" matTooltip="Excluir Tarefa">delete_forever</mat-icon>
+            <mat-icon class="icone material-icons-outlined red"  matTooltip="Excluir Tarefa" value="id" (click)="deleteTarefa($event,element.indice)">delete_forever</mat-icon>
          
           </span>
 
@@ -33,7 +33,7 @@
       </ng-container>
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns" ></tr>
-      <tr mat-row   *matRowDef="let row; columns: displayedColumns;" (click)="clicouNalinha($event,row)"></tr>
+      <tr mat-row  *matRowDef="let row; columns: displayedColumns;" ></tr>
     </table>
  
   </div>
