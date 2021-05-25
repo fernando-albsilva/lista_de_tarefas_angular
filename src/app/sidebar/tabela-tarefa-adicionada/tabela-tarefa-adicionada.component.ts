@@ -39,21 +39,14 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
 
 
   deleteTarefa($event: Event, indice: string) {
-    console.log(indice);
     this.tarefaService.deleteTarefa(indice);
-    console.log(this.tarefaService.listaDeTarefas);
     this.tarefaService.listaDeTarefas = this.tarefaService.listaDeTarefas.filter((el: any) => {
       return el.indice !== indice;
     });
     this.dataTable = [];
-    console.log("imprimindo lista de tarefas");
-    console.log(this.tarefaService.listaDeTarefas);
     this.tarefaService.listaDeTarefas.map((elemento) => {
-      console.log("mapeando");
       this.dataTable.push(elemento);
     });
-    console.log("imprimindo data table");
-    console.log(this.dataTable);
     this.ordenaListaPorPrioridade();
     this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   }

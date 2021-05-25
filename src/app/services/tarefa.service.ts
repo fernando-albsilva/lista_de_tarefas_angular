@@ -29,8 +29,6 @@ export class TarefaService{
         
         TarefaService._listaDeTarefas.push({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice:(this.adicionaTarefaId()) })
         this.emitirTarefaAdicionada.emit({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice: TarefaService._tarefaId })
-        // console.log("LISTA ATUALIZADA");
-        // console.log(this._listaDeTarefas);
         this.mostraMensagem();
         this.verifica();
     }
@@ -57,10 +55,10 @@ export class TarefaService{
     }
 
     deleteTarefa(indice:string){
-        // console.log(this._listaDeTarefas);
+
          TarefaService._listaDeTarefas =  this.listaDeTarefas.filter( (el:any) =>{
             return el.indice !== indice;
         } );
-        // console.log(this.listaDeTarefas);
+  
     }
 }
