@@ -23,9 +23,11 @@ import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
 import { SideBarComponent } from './sidebar/sidebar.component';
-import { CardHeaderComponent } from './sidebar/card-header/card-header.component';
-import { CardAdicionaTarefaComponent } from './sidebar/card-adiciona-tarefa/card-adiciona-tarefa.component';
+import { CardHeaderDataComponent } from './sidebar/card-header-data/card-header-data.component';
+import { CardHeaderTarefaComponent } from './sidebar/card-header-tarefa/card-header-tarefa.component';
+import { CardHeaderJornadaComponent } from './sidebar/card-header-jornada/card-header-jornada.component';
 import { CardInformacoesComponent } from './sidebar/card-informacoes/card-informacoes.component';
+import { CardAdicionaTarefaComponent } from './sidebar/card-adiciona-tarefa/card-adiciona-tarefa.component';
 import { CardAcoesComponent } from './sidebar/card-acoes/card-acoes.component';
 import { ListaDeTarefasComponent } from './sidebar/lista-de-tarefas/lista-de-tarefas.component';
 import { TabelaTarefaAdicionadaComponent } from './sidebar/tabela-tarefa-adicionada/tabela-tarefa-adicionada.component';
@@ -41,7 +43,9 @@ import { TarefaModel } from './model/TarefaModel';
     AppComponent,
     HeaderComponent,
     SideBarComponent,
-    CardHeaderComponent,
+    CardHeaderDataComponent,
+    CardHeaderTarefaComponent,
+    CardHeaderJornadaComponent,
     CardAdicionaTarefaComponent,
     CardInformacoesComponent,
     CardAcoesComponent,

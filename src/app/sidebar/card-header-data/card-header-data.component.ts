@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-card-header',
-  templateUrl: './card-header.component.html',
-  styleUrls: ['./card-header.component.scss']
+  selector: 'app-card-header-data',
+  templateUrl: './card-header-data.component.html',
+  styleUrls: ['./card-header-data.component.scss']
 })
-export class CardHeaderComponent implements OnInit {
+export class CardHeaderDataComponent implements OnInit {
 
   @Input() icone = '';
   @Input() info:any;

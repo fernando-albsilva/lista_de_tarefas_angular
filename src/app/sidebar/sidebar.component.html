@@ -19,13 +19,13 @@
     <mat-sidenav-content class="content-container">
 
         <div class="first-menu-row-card-container">
-            <app-card-header class="card-header-width" [icone]="icone_card_one" [info]="info_pai_card_1">
-            </app-card-header>
-            <app-card-header class="card-header-width" [icone]="icone_card_two" [info]="info_pai_card_2">
-            </app-card-header>
-            <app-card-header class="card-header-width" [icone]="icone_card_three" [info]="info_pai_card_3"
-                [classe_green_bg]="info_classe_green_bg"></app-card-header>
-
+            <app-card-header-data class="card-header-width" [icone]="icone_card_one" [info]="info_pai_card_1">
+            </app-card-header-data>
+                <app-card-header-tarefa class="card-header-width" [icone]="icone_card_two" [info]="info_pai_card_2">
+                </app-card-header-tarefa>
+                <app-card-header-jornada class="card-header-width" [icone]="icone_card_three" [info]="info_pai_card_3"
+                    [classe_green_bg]="info_classe_green_bg">
+                </app-card-header-jornada>
         </div>
 
         <div class="second-menu-row-card-container">
@@ -41,7 +41,7 @@
 
         </div>
 
-        
+
     </mat-sidenav-content>
 
 </mat-sidenav-container>

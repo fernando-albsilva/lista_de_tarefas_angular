@@ -9,7 +9,10 @@ export class TarefaService{
 
 
     emitirTarefaAdicionada = new EventEmitter<any>();
-
+    emitirTarefaPendente = new EventEmitter<any>();
+    emitirTarefaConcluida = new EventEmitter<any>();
+    emitirTarefaAtiva = new EventEmitter<any>();
+    
     private static _tarefaId:string='0';
     private static _listaDeTarefas:any[]=[];
 
@@ -29,6 +32,7 @@ export class TarefaService{
         
         TarefaService._listaDeTarefas.push({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice:(this.adicionaTarefaId()) })
         this.emitirTarefaAdicionada.emit({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice: TarefaService._tarefaId })
+        this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
         this.mostraMensagem();
         this.verifica();
     }
