@@ -20,6 +20,12 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   constructor(private tarefaService: TarefaService) { }
 
   ngOnInit() {
+
+    this.escutaTarefaAdicionada();
+   
+  }
+
+  escutaTarefaAdicionada(){
     this.tarefaService.emitirTarefaAdicionada.subscribe(
       tarefaCriada => {
         this.recarregaLista(tarefaCriada);
@@ -28,47 +34,40 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
     );
   }
 
+
   recarregaLista(tarefaCriada: any) {
     this.dataTable.push(tarefaCriada);
     this.ordenaListaPorPrioridade();
-
-
     this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
-
   }
 
 
 
   deleteTarefa($event: Event, indice: string) {
     this.tarefaService.deleteTarefa(indice);
-    this.tarefaService.listaDeTarefas = this.tarefaService.listaDeTarefas.filter((el: any) => {
-      return el.indice !== indice;
-    });
     this.dataTable = [];
     this.tarefaService.listaDeTarefas.map((elemento) => {
-      this.dataTable.push(elemento);
+      console.log("elemento datatable"+elemento);
+      this.dataTable.push({
+        nome_tarefa: (elemento.nomeTarefa),
+        prioridade: (elemento.prioridade), 
+        descricao: (elemento.descricao), 
+        indice: (elemento.id) 
+        });
     });
     this.ordenaListaPorPrioridade();
     this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   }
 
   //TODO implementar metodo para iniciar a contagem de uma tarefang
+  iniciarTarefa(elemento:any){
+
+  }
 
   mostrarInformacaoTarefa($event: Event, elemento: any) {
-    //TODO retirar o modal do sidebar content e colocar dentro da lista de tarefas 
     this.tarefaInfo=elemento;
     this.modalInfo=true;
 
-    // this.tarefaService.deleteTarefa(indice);
-    // this.tarefaService.listaDeTarefas = this.tarefaService.listaDeTarefas.filter((el: any) => {
-    //   return el.indice !== indice;
-    // });
-    // this.dataTable = [];
-    // this.tarefaService.listaDeTarefas.map((elemento) => {
-    //   this.dataTable.push(elemento);
-    // });
-    // this.ordenaListaPorPrioridade();
-    // this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   }
 
   fecharModalInformacaoTarefa(){

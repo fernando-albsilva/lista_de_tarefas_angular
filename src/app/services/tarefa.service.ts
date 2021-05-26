@@ -11,36 +11,46 @@ export class TarefaService{
     emitirTarefaAdicionada = new EventEmitter<any>();
     emitirTarefaPendente = new EventEmitter<any>();
     emitirTarefaConcluida = new EventEmitter<any>();
-    emitirTarefaAtiva = new EventEmitter<any>();
+    emitirTarefaIniciada = new EventEmitter<any>();
     
     private static _tarefaId:string='0';
-    private static _listaDeTarefas:any[]=[];
+    private  _listaDeTarefas:TarefaModel[]=[];
 
 
     
     constructor(private snackBar: MatSnackBar){  }
 
-    get listaDeTarefas() : any[]{
+    get listaDeTarefas() : TarefaModel[]{
         
-        return TarefaService._listaDeTarefas;
+        return this._listaDeTarefas;
     }
-    set listaDeTarefas(listaDeTarefa:any[]) {
-        TarefaService._listaDeTarefas = listaDeTarefa;
-    }
+    // set setlistaDeTarefas(tarefa:TarefaModel)  {
 
-    adicionaTarefa(tarefa:TarefaModel){
-        
-        TarefaService._listaDeTarefas.push({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice:(this.adicionaTarefaId()) })
-        this.emitirTarefaAdicionada.emit({nome_tarefa: (tarefa.nomeTarefa) , prioridade: (tarefa.prioridade)  , descricao: (tarefa.descricao), indice: TarefaService._tarefaId })
+    //     TarefaService._listaDeTarefas.push(tarefa);
+    // }
+
+    adicionaTarefa(tarefa:any):void{
+
+        tarefa.id = this.adicionaTarefaId();
+        this._listaDeTarefas.push(tarefa);
+        this.emitirTarefaAdicionada.emit({
+            nome_tarefa: (tarefa.nomeTarefa),
+            prioridade: (tarefa.prioridade), 
+            descricao: (tarefa.descricao), 
+            indice: (tarefa.id) 
+        });
         this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
         this.mostraMensagem();
-        this.verifica();
+       
     }
 
-    verifica(){
-        return TarefaService._listaDeTarefas;
-    }
+    adicionaTarefaId(){
 
+        let indice:number =   parseInt(TarefaService._tarefaId);
+        indice ++;
+        TarefaService._tarefaId=indice.toString();
+        return TarefaService._tarefaId;
+    }
    
     mostraMensagem():void {  
 
@@ -51,18 +61,22 @@ export class TarefaService{
         });
     }
 
-    adicionaTarefaId(){
-        let indice:number =   parseInt(TarefaService._tarefaId);
-        indice ++;
-        TarefaService._tarefaId=indice.toString();
-        return TarefaService._tarefaId;
-    }
 
     deleteTarefa(indice:string){
-
-         TarefaService._listaDeTarefas =  this.listaDeTarefas.filter( (el:any) =>{
-            return el.indice !== indice;
+     
+         this._listaDeTarefas =  this._listaDeTarefas.filter( (el:any) =>{
+           
+            console.log("indice a ser excluido:"+indice);
+            // console.log(el);
+            console.log("indice do elemento da lista: "+el._id);
+            console.log(el._id !== indice);
+            return el._id !== indice;
         } );
+        console.log("listaNova:"+ this._listaDeTarefas);
         this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
+    }
+
+    iniciarTarefa(elemento:any) {
+
     }
 }

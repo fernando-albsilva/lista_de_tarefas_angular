@@ -41,8 +41,8 @@ export class CardHeaderJornadaComponent implements OnInit {
 
   escutaTarefaPendente(){
     this.tarefaService.emitirTarefaPendente.subscribe(quantidadeTarefa => {
-      console.log("recebeu tarefa");
-      console.log(quantidadeTarefa);
+      // console.log("recebeu tarefa");
+      // console.log(quantidadeTarefa);
       this.info_1="TarefasPendentes: "+ quantidadeTarefa.toString();
   });
   }

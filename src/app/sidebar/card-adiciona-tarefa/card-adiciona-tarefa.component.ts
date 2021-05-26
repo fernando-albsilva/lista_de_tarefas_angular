@@ -16,17 +16,12 @@ import { TarefaService } from 'src/app/services/tarefa.service';
 
 export class CardAdicionaTarefaComponent implements OnInit {
 
-   
-  // tarefa: TarefaModel = new TarefaModel();
-  // tarefaService=new TarefaService();
-  // submitted = false;
-  // tarefaForm: FormGroup ;
-  // formBuilder: FormBuilder = new FormBuilder();
+  private tarefa:TarefaModel = new TarefaModel();
+
   tarefaForm: FormGroup;
 
   constructor(
     private tarefaService:TarefaService,
-    private tarefa:TarefaModel,
     private formBuilder:FormBuilder
     ) {
 
@@ -49,13 +44,15 @@ export class CardAdicionaTarefaComponent implements OnInit {
     this.tarefa.descricao=this.tarefaForm.value.descricaoTarefa;
     if((this.tarefa.nomeTarefa !== '') && (this.tarefa.prioridade !== '') && (this.tarefa.descricao !== '') )
     {
-     setTimeout( ()=> {
-        this.tarefaService.adicionaTarefa(this.tarefa);
-        this.tarefa.nomeTarefa='';
-        this.tarefa.prioridade='';
-        this.tarefa.descricao='';
+      
+      this.tarefaService.adicionaTarefa(this.tarefa);
+      this.tarefa=new TarefaModel();
+      setTimeout( ()=> {
+          this.tarefa.nomeTarefa='';
+          this.tarefa.prioridade='';
+          this.tarefa.descricao='';
 
-     },100);
+      },100);
     }
   }
 
