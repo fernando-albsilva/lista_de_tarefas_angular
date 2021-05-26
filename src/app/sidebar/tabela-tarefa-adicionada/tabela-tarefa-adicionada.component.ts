@@ -52,6 +52,8 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
     this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   }
 
+  //TODO implementar metodo para iniciar a contagem de uma tarefang
+
   mostrarInformacaoTarefa($event: Event, elemento: any) {
     //TODO retirar o modal do sidebar content e colocar dentro da lista de tarefas 
     this.tarefaInfo=elemento;
@@ -81,6 +83,7 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
       return 0;
     });
   }
+
 
 }
 

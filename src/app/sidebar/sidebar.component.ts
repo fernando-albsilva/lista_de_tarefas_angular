@@ -66,7 +66,7 @@ export class SideBarComponent implements OnInit{
         
         this.info_pai_card_1.push(
             "Data:",
-            data.getDate()+" de "+ DataTransformaMes[(data.getMonth()+1)] +" de "+data.getUTCFullYear(),
+            data.getDate()+" de "+ DataTransformaMes[(data.getMonth())] +" de "+data.getUTCFullYear(),
             DataTransformaDia[data.getDay()]
             );
 
@@ -78,7 +78,7 @@ export class SideBarComponent implements OnInit{
         );
       
         this.info_pai_card_3.push(
-            "Data :"+ data.getDate() + " de " + DataTransformaMes[(data.getMonth()+1)] + " de " + data.getUTCFullYear(),
+            "Data :"+ data.getDate() + " de " + DataTransformaMes[(data.getMonth())] + " de " + data.getUTCFullYear(),
             "Horas Trabalhadas:" + "00:00:00",
             "Horas Intervalo:" + "00:00:00"
         );

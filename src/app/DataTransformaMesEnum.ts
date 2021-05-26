@@ -7,4 +7,8 @@ export enum DataTransformaMes {
     "Junho" = 5,
     "Julho" = 6,
     "Agosto" = 7,
+    "Setembro" = 8,
+    "Outubro" = 9,
+    "Novembro" = 10,
+    "Dezembro" = 11
 }
