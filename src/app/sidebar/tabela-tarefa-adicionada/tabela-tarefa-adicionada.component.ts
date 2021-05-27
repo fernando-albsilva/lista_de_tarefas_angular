@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { TarefaModel } from 'src/app/model/TarefaModel';
 import { TarefaService } from '../../services/tarefa.service'
 
 @Component({
@@ -59,9 +60,13 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
     this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   }
 
-  //TODO implementar metodo para iniciar a contagem de uma tarefang
-  iniciarTarefa(elemento:any){
-
+  
+  iniciarTarefa(indiceTarefa:string){
+    this.tarefaService.iniciarTarefa(indiceTarefa);
+  }
+  //TODO implementando o pausa da tarefa
+  pausarTarefa(indiceTarefa:string){
+    this.tarefaService.pausarTarefa(indiceTarefa);
   }
 
   mostrarInformacaoTarefa($event: Event, elemento: any) {

@@ -1,7 +1,13 @@
 table {
     width: 100%;
     // height: calc();
-    
+    th{
+      position: -webkit-sticky; /* Safari */
+      position: sticky;
+      top: 0;
+      background-color: #fafafa;
+      z-index: 5;
+    }
   }
   .flex-column{
     display: flex;
@@ -13,6 +19,7 @@ table {
 .width-100{
   width: 100%;
 }
+
 ::-webkit-scrollbar {
     width: 5px;
 }

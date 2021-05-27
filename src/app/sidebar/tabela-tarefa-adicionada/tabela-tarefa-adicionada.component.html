@@ -26,11 +26,18 @@
           >
             info
           </mat-icon>
-          <mat-icon class="icone material-icons-outlined green" matTooltip="Iniciar Tarefa"
-                    (click)="iniciarTarefa(element.indice)">
+          <mat-icon class="icone material-icons-outlined green"
+                     matTooltip="Iniciar Tarefa"
+                    (click)="iniciarTarefa(element.indice)"
+          >
                       play_arrow
           </mat-icon>
-          <mat-icon class="icone material-icons-outlined yellow" matTooltip="Pausar Tarefa">pause</mat-icon>
+          <mat-icon class="icone material-icons-outlined yellow"
+                    matTooltip="Pausar Tarefa"
+                    (click)="pausarTarefa(element.indice)"
+          >
+                      pause
+          </mat-icon>
           <mat-icon class="icone material-icons-outlined orange" matTooltip="Editar Tarefa">edit</mat-icon>
           <mat-icon class="icone material-icons-outlined purple" matTooltip="Finalizar Tarefa">sports_score</mat-icon>
           <mat-icon class="icone material-icons-outlined red" matTooltip="Excluir Tarefa" value="id"
@@ -41,7 +48,7 @@
       </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-header-row class="sticky" *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 

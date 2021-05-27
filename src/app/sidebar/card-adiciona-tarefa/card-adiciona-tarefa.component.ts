@@ -26,7 +26,7 @@ export class CardAdicionaTarefaComponent implements OnInit {
     ) {
 
       this.tarefaForm = this.formBuilder.group({
-          nomeTarefa:['', Validators.required],
+          nomeTarefa:['',  Validators.compose([Validators.required,  Validators.maxLength(250)])],
           prioridadeTarefa:['', Validators.required],
           descricaoTarefa:['',Validators.required]
       });
