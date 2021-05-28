@@ -17,7 +17,7 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   dataSource: any = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   modalInfo : boolean = false;
   tarefaInfo:any;
-
+  disable:any;
   constructor(private tarefaService: TarefaService) { }
 
   ngOnInit() {
@@ -64,7 +64,7 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   iniciarTarefa(indiceTarefa:string){
     this.tarefaService.iniciarTarefa(indiceTarefa);
   }
-  //TODO implementando o pausa da tarefa
+  
   pausarTarefa(indiceTarefa:string){
     this.tarefaService.pausarTarefa(indiceTarefa);
   }

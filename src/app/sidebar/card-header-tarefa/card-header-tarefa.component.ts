@@ -9,42 +9,60 @@ import { TarefaService } from 'src/app/services/tarefa.service';
 export class CardHeaderTarefaComponent implements OnInit {
 
   @Input() icone = '';
-  @Input() info:any;
-  @Input() classe_green_bg: string[]=["false"];
+  @Input() info: any;
+  @Input() classe_green_bg: string[] = ["false"];
 
-  classe_icone:string='';
-  classe_info:string='';
-  info_1='';
-  info_2='';
-  info_3='';
+  classe_icone: string = '';
+  classe_info: string = '';
+  info_1 = '';
+  info_2 = '';
+  info_3 = '';
 
-  constructor(private tarefaService:TarefaService) {
+  constructor(private tarefaService: TarefaService) {
     this.escutaTarefaPendente();
   }
 
   ngOnInit(): void {
-    this.info_1=this.info[0];
-    this.info_2=this.info[1];
-    this.info_3=this.info[2];
-   
-    if(this.classe_green_bg[0] != "false")
-    {
-      this.classe_icone="icon-containe-green";
-      this.classe_info="card-info-container-green";
-     
-    }else{
-      this.classe_icone="icon-container";
-      this.classe_info="card-info-container";
+    this.info_1 = this.info[0];
+    this.info_2 = this.info[1];
+    this.info_3 = this.info[2];
+
+    if (this.classe_green_bg[0] != "false") {
+      this.classe_icone = "icon-containe-green";
+      this.classe_info = "card-info-container-green";
+
+    } else {
+      this.classe_icone = "icon-container";
+      this.classe_info = "card-info-container";
     }
-   
+
+    this.escutaTarefaPendente();
+    this.escutaTarefaAtiva();
+    this.escutaTarefaPausada();
+    this.escutaTarefaDeletada()
   }
 
-  escutaTarefaPendente(){
+
+  escutaTarefaPendente() {
     this.tarefaService.emitirTarefaPendente.subscribe(quantidadeTarefa => {
-      // console.log("recebeu tarefa");
-      // console.log(quantidadeTarefa);
-      this.info_1="Tarefas Pendentes: "+ quantidadeTarefa.toString();
-  });
+      this.info_1 = "Tarefas Pendentes: " + quantidadeTarefa.toString();
+    });
   }
-  
+
+  escutaTarefaAtiva() {
+    this.tarefaService.emitirTarefaIniciada.subscribe(() => {
+      this.info_3 = "Tarefas Ativas: 1";
+    });
+  }
+  escutaTarefaPausada() {
+    this.tarefaService.emitirTarefaPausada.subscribe(() => {
+      this.info_3 = "Tarefas Ativas: 0";
+    });
+  }
+  escutaTarefaDeletada() {
+    this.tarefaService.emitirTarefaDeletada.subscribe( () => {
+      this.info_3 = "Tarefas Ativas: 0";
+    });
+  }
+
 }

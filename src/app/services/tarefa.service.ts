@@ -9,10 +9,11 @@ export class TarefaService {
 
 
     emitirTarefaAdicionada = new EventEmitter<any>();
+    emitirTarefaPausada = new EventEmitter<any>();
+    emitirTarefaDeletada = new EventEmitter<any>();
     emitirTarefaPendente = new EventEmitter<any>();
     emitirTarefaConcluida = new EventEmitter<any>();
     emitirTarefaIniciada = new EventEmitter<any>();
-    emitirTarefaPausada = new EventEmitter<any>();
 
     private static _tarefaId: string = '0';
     private _listaDeTarefas: TarefaModel[] = [];
@@ -25,11 +26,7 @@ export class TarefaService {
 
         return this._listaDeTarefas;
     }
-    // set setlistaDeTarefas(tarefa:TarefaModel)  {
-
-    //     TarefaService._listaDeTarefas.push(tarefa);
-    // }
-
+  
     adicionaTarefa(tarefa: any): void {
 
         tarefa.id = this.adicionaTarefaId();
@@ -65,13 +62,16 @@ export class TarefaService {
 
     deleteTarefa(indice: string) {
 
-        this._listaDeTarefas = this._listaDeTarefas.filter((el: any) => {
+        this._listaDeTarefas = this._listaDeTarefas.filter((element: any) => {
 
             console.log("indice a ser excluido:" + indice);
             // console.log(el);
-            console.log("indice do elemento da lista: " + el._id);
-            console.log(el._id !== indice);
-            return el._id !== indice;
+            console.log("indice do elemento da lista: " + element._id);
+            console.log(element._id !== indice);
+
+            if(element._id === indice) {this.emitirTarefaDeletada.emit(element);}
+            // this.emitirTarefaDeletada.emit();
+            return element._id !== indice;
         });
         console.log("listaNova:" + this._listaDeTarefas);
         this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
@@ -79,26 +79,58 @@ export class TarefaService {
 
     iniciarTarefa(indice: string) {
 
-        let tarefa: TarefaModel = new TarefaModel();
+        // let tarefa: TarefaModel = new TarefaModel();
         this._listaDeTarefas.forEach((elemento) => {
-            if (elemento.id === indice) { tarefa = elemento; }
+            if (elemento.id === indice) {
+                // tarefa = elemento; 
+
+                this.incluiHoraMinSegInicio(elemento);
+                this.emitirTarefaIniciada.emit(elemento);
+            }
         });
 
-        this.incluiHoraMinSegInicio(tarefa);
+        // this.incluiHoraMinSegInicio(tarefa);
 
-        this.emitirTarefaIniciada.emit(tarefa);
+        // this.emitirTarefaIniciada.emit(tarefa);
+
     }
 
-    pausarTarefa(indice: string){
+    pausarTarefa(indice: string) {
 
         this.emitirTarefaPausada.emit(indice);
     }
 
-    incluiHoraMinSegInicio(tarefa:TarefaModel){
+    incluiHoraMinSegInicio(tarefa: TarefaModel) {
         let data = new Date();
-        tarefa.horaIncio = data.getHours();
-        tarefa.minutoInicio = data.getMinutes();
-        tarefa.segundoInicio = data.getSeconds();
+        if ( (tarefa.horaIncio === 0) && (tarefa.minutoInicio === 0) && (tarefa.segundoInicio === 0) ){
+            tarefa.horaIncio = data.getHours();
+            tarefa.minutoInicio = data.getMinutes();
+            tarefa.segundoInicio = data.getSeconds();
+        }else{
+
+
+            tarefa.horaIncio = data.getHours()- (tarefa.horaFim - tarefa.horaIncio);
+            tarefa.minutoInicio = data.getMinutes() - (tarefa.minutoFim - tarefa.minutoInicio);
+            tarefa.segundoInicio = data.getSeconds() - (tarefa.segundoFim - tarefa.segundoInicio);
+        }
+        //TODO o problema é que quando pausa a tarefa e volta continuou contando por causa da hora de inicio marcada,
+        // tem que ver um jeito de descontar o tempo que ficou parada a tarefa criar um atributo para quarad quando foi pausada talves pensar nisso
+
+    }
+
+    registraTempoTarefaAtiva(hora: number, minuto: number, segundo: number, indiceTarefa: string) {
+        this._listaDeTarefas.forEach((elemento) => {
+            if (elemento.id === indiceTarefa) {
+                // elemento.horaIncio = hora;
+                // elemento.minutoInicio = minuto;
+                // elemento.segundoInicio = segundo;
+               
+                elemento.horaFim = hora;
+                elemento.minutoFim = minuto;
+                elemento.segundoFim = segundo;
+            }
+            
+        });
 
 
     }
