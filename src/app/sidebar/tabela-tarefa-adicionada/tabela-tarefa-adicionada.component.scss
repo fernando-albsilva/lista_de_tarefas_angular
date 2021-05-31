@@ -16,10 +16,33 @@ table {
     justify-content: space-around;
     align-items: center;
 }
+.flex-column-modal{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.flex-row{
+  display: flex!important;
+  flex-direction: row!important;
+  flex-wrap: nowrap!important;
+  align-items: center!important;
+  justify-content: space-between!important;
+}
+.flex-end{
+  justify-content: flex-end!important;
+}
+
 .width-100{
   width: 100%;
 }
-
+.height-70{
+  height: 70%;
+}
+.height-10{
+  height: 10%;
+}
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -29,14 +52,6 @@ table {
     border-radius: 10px;
     background: rgba(92,107,191,0.8); 
     // -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5); 
-}
-
-.flex-row{
-  display: flex!important;
-  flex-direction: row!important;
-  flex-wrap: nowrap!important;
-  align-items: center!important;
-  justify-content: space-between!important;
 }
 
 .tabela-container{
@@ -68,13 +83,24 @@ tr{
   position: absolute;
   top: 30%;
   right: 40%;
-  height: 300px;
+  height: 500px;
   width: 400px;
   box-shadow: 0px 4px 20px 2px #383838;
   z-index: 3;
   background-color: #fafafa;
 }
-qqqqqq
+.width-nome-tarefa{
+  width: 195px;
+}
+.heigth-25px{
+  height: 25px!important;
+}
+.elipse{
+  overflow:hidden;
+  overflow-y: hidden;
+  text-overflow:ellipsis;
+
+}
 .icone{
   transform: scale(0.8);
   cursor: pointer;
@@ -109,7 +135,7 @@ color:#4DB6AC;
 }
 
 .gap-10{
-  gap:10px;
+  gap:5px;
 }
 button{
   height: 25px;

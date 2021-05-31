@@ -8,6 +8,13 @@
 .gap-15{
     gap:15px;
 }
+.elipse{
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.over-y{
+    overflow-y: auto;
+}
 span{
     width: 100%;
 }
@@ -19,6 +26,12 @@ span{
 }
 .height-80{
     height: 80%;
+}
+.height-150px{
+    max-height: 150px;
+}
+.height-80px{
+    max-height: 80px;
 }
 .flex-column{
     display: flex;
@@ -38,4 +51,9 @@ span{
     font-size: 0.8rem;
     font-weight: 400;
     color: #5C6BBF;
+}
+.border{
+    // border-top: 0.5px solid #919191;
+    border-bottom: 0.5px solid #919191;
+    
 }
