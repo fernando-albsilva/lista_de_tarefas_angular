@@ -26,13 +26,14 @@
           >
             info
           </mat-icon>
-          <mat-icon class="icone material-icons-outlined green"
-                     matTooltip="Iniciar Tarefa"
-                    (click)="iniciarTarefa(element.indice)"
-          >
-                      play_arrow
-          </mat-icon>
-        
+          <button [disabled]="btn_status" (click)="iniciarTarefa(element.indice)" class="">
+              <mat-icon class="icone material-icons-outlined green"
+                        matTooltip="Iniciar Tarefa"
+                        
+              >
+                          play_arrow
+              </mat-icon>
+          </button>
           <mat-icon class="icone material-icons-outlined yellow"
                     matTooltip="Pausar Tarefa"
                     (click)="pausarTarefa(element.indice)"

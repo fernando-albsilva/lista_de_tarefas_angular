@@ -18,6 +18,9 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   modalInfo : boolean = false;
   tarefaInfo:any;
   disable:any;
+  btn_status:string='';
+  indice_tarefa_ativa='';
+
   constructor(private tarefaService: TarefaService) { }
 
   ngOnInit() {
@@ -36,8 +39,19 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   }
 
 
-  recarregaLista(tarefaCriada: any) {
-    this.dataTable.push(tarefaCriada);
+  recarregaLista(tarefaCriada: TarefaModel) {
+    // this.dataTable.push(tarefaCriada);
+
+    this.dataTable=[];
+    this.tarefaService.listaDeTarefas.map((elemento) => {
+      console.log("elemento datatable"+tarefaCriada);
+      this.dataTable.push({
+        nome_tarefa: (elemento.nomeTarefa),
+        prioridade: (elemento.prioridade), 
+        descricao: (elemento.descricao), 
+        indice: (elemento.id) 
+        });
+      });
     this.ordenaListaPorPrioridade();
     this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   }

@@ -31,12 +31,14 @@ export class TarefaService {
 
         tarefa.id = this.adicionaTarefaId();
         this._listaDeTarefas.push(tarefa);
-        this.emitirTarefaAdicionada.emit({
-            nome_tarefa: (tarefa.nomeTarefa),
-            prioridade: (tarefa.prioridade),
-            descricao: (tarefa.descricao),
-            indice: (tarefa.id)
-        });
+        
+        this.emitirTarefaAdicionada.emit(tarefa);
+        // this.emitirTarefaAdicionada.emit({
+        //     nome_tarefa: (tarefa.nomeTarefa),
+        //     prioridade: (tarefa.prioridade),
+        //     descricao: (tarefa.descricao),
+        //     indice: (tarefa.id)
+        // });
         this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
         this.mostraMensagem();
 
@@ -113,9 +115,7 @@ export class TarefaService {
             tarefa.minutoInicio = data.getMinutes() - (tarefa.minutoFim - tarefa.minutoInicio);
             tarefa.segundoInicio = data.getSeconds() - (tarefa.segundoFim - tarefa.segundoInicio);
         }
-        //TODO o problema é que quando pausa a tarefa e volta continuou contando por causa da hora de inicio marcada,
-        // tem que ver um jeito de descontar o tempo que ficou parada a tarefa criar um atributo para quarad quando foi pausada talves pensar nisso
-
+      
     }
 
     registraTempoTarefaAtiva(hora: number, minuto: number, segundo: number, indiceTarefa: string) {
