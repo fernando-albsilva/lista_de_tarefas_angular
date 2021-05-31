@@ -13,7 +13,7 @@ export class CardInformacoesComponent implements OnInit {
   nome_tarefa = 'Sem tarefa selecionada';
   duracao_tarefa = '00:00:00';
   descricao_Tarefa = 'Sem descrição';
-  intervaloTarefa: any;
+  intervaloTarefa: any = null;
   totalHora: string='';
   totalMinuto: string='';
   totalSegundo: string='';
@@ -31,8 +31,13 @@ export class CardInformacoesComponent implements OnInit {
   }
 
   escutaTarefaIniciada() {
+   
     this.tarefaService.emitirTarefaIniciada.subscribe(
       (tarefaIniciada:TarefaModel) => {
+       
+        if(this.intervaloTarefa !== null){
+          this.pausaContagemTempoTarefa();
+        }
         this.tarefa = new TarefaModel();
         this.tarefa = tarefaIniciada;
         this.setDataInfoCard("Tarefa Iniciada");
@@ -43,7 +48,7 @@ export class CardInformacoesComponent implements OnInit {
   escutaTarefaPausada() {
     this.tarefaService.emitirTarefaPausada.subscribe(
       indiceTarefaPausada => {
-        this.pausaContagemTempoTarefa(indiceTarefaPausada);
+        this.pausaContagemTempoTarefa();
       });
 
   }
@@ -51,10 +56,10 @@ export class CardInformacoesComponent implements OnInit {
   escutaTarefaDeletada() {
     this.tarefaService.emitirTarefaDeletada.subscribe(
       tarefaDeletada => {
-        this.limpaSetInteval();
+        this.pausaContagemTempoTarefa();
         this.tarefa = tarefaDeletada;
         this.setDataInfoCard("Tarefa Excluida");
-        setTimeout(()=>{this.tarefa=new TarefaModel()},2000);
+        setTimeout(()=>{this.tarefa=new TarefaModel()},100);
       });
 
   }
@@ -105,15 +110,15 @@ export class CardInformacoesComponent implements OnInit {
 
   }
 
-  pausaContagemTempoTarefa(indice: string) {
+  pausaContagemTempoTarefa() {
 
 
     let data = new Date();
-    if (this.tarefa.id === indice) {
+    // if (this.tarefa.id === indice) {
       this.limpaSetInteval();
       this.tarefaService.registraTempoTarefaAtiva((data.getHours()),(data.getMinutes()),(data.getSeconds()),this.tarefa.id);
 
-    }
+    // }
 
   }
  

@@ -18,8 +18,7 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   modalInfo : boolean = false;
   tarefaInfo:any;
   disable:any;
-  btn_status:string='';
-  indice_tarefa_ativa='';
+ 
 
   constructor(private tarefaService: TarefaService) { }
 
@@ -30,21 +29,18 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   }
 
   escutaTarefaAdicionada(){
-    this.tarefaService.emitirTarefaAdicionada.subscribe(
-      tarefaCriada => {
-        this.recarregaLista(tarefaCriada);
-
+    this.tarefaService.emitirTarefaAdicionada.subscribe(() => {
+        this.recarregaLista();
       }
     );
   }
 
 
-  recarregaLista(tarefaCriada: TarefaModel) {
+  recarregaLista() {
     // this.dataTable.push(tarefaCriada);
 
     this.dataTable=[];
     this.tarefaService.listaDeTarefas.map((elemento) => {
-      console.log("elemento datatable"+tarefaCriada);
       this.dataTable.push({
         nome_tarefa: (elemento.nomeTarefa),
         prioridade: (elemento.prioridade), 
@@ -53,25 +49,14 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
         });
       });
     this.ordenaListaPorPrioridade();
-    this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
+    this.dataSource = new MatTableDataSource(this.dataTable);
   }
 
 
 
   deleteTarefa($event: Event, indice: string) {
     this.tarefaService.deleteTarefa(indice);
-    this.dataTable = [];
-    this.tarefaService.listaDeTarefas.map((elemento) => {
-      console.log("elemento datatable"+elemento);
-      this.dataTable.push({
-        nome_tarefa: (elemento.nomeTarefa),
-        prioridade: (elemento.prioridade), 
-        descricao: (elemento.descricao), 
-        indice: (elemento.id) 
-        });
-    });
-    this.ordenaListaPorPrioridade();
-    this.dataSource = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
+    this.recarregaLista();
   }
 
   
@@ -107,6 +92,6 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
 
 export interface TarefaModelInterface {
   prioridade: string;
-  nome_tarefa: number;
-  descricao: number;
+  nome_tarefa: string;
+  descricao: string;
 }
