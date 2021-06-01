@@ -10,7 +10,8 @@ export class TarefaModel {
     private _minutoFim:number = 0;
     private _segundoFim:number = 0;
     private _id: string = '';
-    
+    private _duracao:string  = '00:00:00';
+
     constructor () {}
 
     get nomeTarefa() { return this._nomeTarefa};
@@ -23,6 +24,7 @@ export class TarefaModel {
     get minutoFim() { return this._minutoFim};
     get segundoFim() { return this._segundoFim};
     get id() { return this._id};
+    get duracao() { return this._duracao};
     
     set nomeTarefa( nomeTarefa : string ) { this._nomeTarefa = nomeTarefa };
     set prioridade( prioridade : string ) { this._prioridade = prioridade };
@@ -34,5 +36,6 @@ export class TarefaModel {
     set minutoFim( minutoFim:number) {  this._minutoFim=minutoFim};
     set segundoFim( segundoFim:number) {  this._segundoFim=segundoFim};
     set id( idTarefa : string ) { this._id = idTarefa};
+    set duracao( duracao : string ) { this._duracao = duracao};
 }
 

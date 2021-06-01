@@ -27,7 +27,7 @@ export class CardInformacoesComponent implements OnInit {
     this.escutaTarefaIniciada();
     this.escutaTarefaPausada();
     this.escutaTarefaDeletada();
-
+    this.escutaTarefaFinalizada();
   }
 
   escutaTarefaIniciada() {
@@ -47,7 +47,7 @@ export class CardInformacoesComponent implements OnInit {
 
   escutaTarefaPausada() {
     this.tarefaService.emitirTarefaPausada.subscribe(
-      indiceTarefaPausada => {
+      () => {
         this.pausaContagemTempoTarefa();
       });
 
@@ -62,6 +62,17 @@ export class CardInformacoesComponent implements OnInit {
         setTimeout(()=>{this.tarefa=new TarefaModel()},100);
       });
 
+  }
+
+  escutaTarefaFinalizada() {
+    this.tarefaService.emitirTarefaFinalizada.subscribe(
+      (tarefaFinalizada) => {
+        this.pausaContagemTempoTarefa();
+        setTimeout(()=>{
+        this.tarefa= tarefaFinalizada;
+        this.setDataInfoCard("Tarefa Finalizada");
+        this.tarefa=new TarefaModel()},300);
+      });
   }
 
   setDataInfoCard(status:string) {
@@ -106,6 +117,8 @@ export class CardInformacoesComponent implements OnInit {
     if (parseInt(this.totalMinuto) <= 9) { this.totalMinuto = "0" + this.totalMinuto }
     if (parseInt(this.totalSegundo) <= 9) { this.totalSegundo = "0" + this.totalSegundo }
 
+    this.tarefa.duracao=this.totalHora + ":" + this.totalMinuto + ":" + this.totalSegundo;
+    
     return (this.totalHora + ":" + this.totalMinuto + ":" + this.totalSegundo);
 
   }

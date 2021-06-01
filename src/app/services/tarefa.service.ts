@@ -131,6 +131,7 @@ export class TarefaService {
                 elemento.horaFim = hora;
                 elemento.minutoFim = minuto;
                 elemento.segundoFim = segundo;
+                // elemento.duracao = hora.toString()+":"+minuto.toString()+":"+segundo.toString;
             }
 
         });
@@ -169,20 +170,21 @@ export class TarefaService {
     }
 
     finalizarTarefa(indiceTarefa:string){
-     
+     //TODO o problema é que nao esta atualizando o tempo antes de executar o finalizar tarefa, verificar se algum componente esta sendo zerado antes de gravar os dados
         this._listaDeTarefas= this.listaDeTarefas.filter((tarefa)=>{
             if (tarefa.id === indiceTarefa)
             {
                
                 this._listaDeTarefasConcluidas.push(tarefa);
+                setTimeout(()=>{this.emitirTarefaFinalizada.emit(tarefa);},100);
                 return false;
             }
             else{
                 return true;
             }
         });
+
         
-        this.emitirTarefaFinalizada.emit();
         
     }
 }
