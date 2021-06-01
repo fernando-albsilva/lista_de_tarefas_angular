@@ -39,8 +39,8 @@
           >
                       pause
           </mat-icon>
-          <mat-icon class="icone material-icons-outlined orange" matTooltip="Editar Tarefa">edit</mat-icon>
-          <mat-icon class="icone material-icons-outlined purple" matTooltip="Finalizar Tarefa">sports_score</mat-icon>
+          <mat-icon class="icone material-icons-outlined orange" matTooltip="Editar Tarefa" (click)="fechaDialog('false',element.indice)">edit</mat-icon>
+          <mat-icon class="icone material-icons-outlined purple" matTooltip="Finalizar Tarefa" (click)="finalizaTarefa(element.indice)">sports_score</mat-icon>
           <mat-icon class="icone material-icons-outlined red" matTooltip="Excluir Tarefa" value="id"
             (click)="deleteTarefa($event,element.indice)">delete_forever</mat-icon>
 
@@ -65,5 +65,13 @@
     >
       reply
     </mat-icon>
+  </div>
+</ng-container>
+
+
+<ng-container *ngIf="dialogEdicao">
+  <div class="flex-column-modal dialog-edicao">
+    <app-dialog-edita-tarefa [indiceTarefaEdicao]="indiceTarefaEdicao"  (fechaDialog)="fechaDialog('true','a')" class="width-90 height-90 flex-column">
+    </app-dialog-edita-tarefa>
   </div>
 </ng-container>

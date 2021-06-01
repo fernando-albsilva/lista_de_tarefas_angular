@@ -1,15 +1,17 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { TarefaModel } from 'src/app/model/TarefaModel';
-import { TarefaService } from '../../services/tarefa.service'
-import { DialogEditaTarefaComponent } from '../lista-de-tarefas/dialog-edita-tarefa/dialog-edita-tarefa/dialog-edita-tarefa.component';
+import { TarefaService } from 'src/app/services/tarefa.service';
+
+
 
 @Component({
-  selector: 'app-tabela-tarefa-adicionada',
-  templateUrl: './tabela-tarefa-adicionada.component.html',
-  styleUrls: ['./tabela-tarefa-adicionada.component.scss']
+  selector: 'app-tabela-tarefa-concluida',
+  templateUrl: './tabela-tarefa-concluida.component.html',
+  styleUrls: ['./tabela-tarefa-concluida.component.scss']
 })
-export class TabelaTarefaAdicionadaComponent implements OnInit {
+export class TabelaTarefaConcluidaComponent implements OnInit {
+
 
   dataTable: any[] = [];
 
@@ -29,16 +31,8 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.escutaTarefaAdicionada();
     this.escutaTarefaFinalizada();
    
-  }
-
-  escutaTarefaAdicionada(){
-    this.tarefaService.emitirTarefaAdicionada.subscribe(() => {
-        this.recarregaLista();
-      }
-    );
   }
 
   escutaTarefaFinalizada(){
@@ -53,7 +47,7 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
     // this.dataTable.push(tarefaCriada);
 
     this.dataTable=[];
-    this.tarefaService.listaDeTarefas.map((elemento) => {
+    this.tarefaService.listaDeTarefasConcluida.map((elemento) => {
       this.dataTable.push({
         nome_tarefa: (elemento.nomeTarefa),
         prioridade: (elemento.prioridade), 
@@ -68,22 +62,12 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
 
 
   deleteTarefa($event: Event, indice: string) {
-    this.tarefaService.deleteTarefa(indice);
+    // this.tarefaService.deleteTarefaConcluida(indice);
     this.recarregaLista();
   }
 
   
-  iniciarTarefa(indiceTarefa:string){
-    this.tarefaService.iniciarTarefa(indiceTarefa);
-  }
-  
-  pausarTarefa(indiceTarefa:string){
-    this.tarefaService.pausarTarefa(indiceTarefa);
-  }
 
-  finalizaTarefa(indiceTarefa:string){
-    this.tarefaService.finalizarTarefa(indiceTarefa);
-  }
   mostrarInformacaoTarefa($event: Event, elemento: any) {
     this.tarefaInfo=elemento;
     this.modalInfo=true;
@@ -103,18 +87,6 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
     });
   }
 
-  fechaDialog(valor:string,indiceTarefaEdicao:string){
-    if(valor === 'true')
-    {
-      this.dialogEdicao = false;
-    }else{
-     this.tarefaService.emitirTarefaPausada.emit();
-     this.dialogEdicao = true;
-      setTimeout (()=>{this.tarefaService.emiteEventoAtualizaModalEdicao(indiceTarefaEdicao);},100);
-    }
-    
-  }
-
 }
 
 export interface TarefaModelInterface {
@@ -122,3 +94,4 @@ export interface TarefaModelInterface {
   nome_tarefa: string;
   descricao: string;
 }
+

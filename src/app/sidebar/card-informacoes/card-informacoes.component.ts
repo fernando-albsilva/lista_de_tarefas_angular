@@ -112,11 +112,11 @@ export class CardInformacoesComponent implements OnInit {
 
   pausaContagemTempoTarefa() {
 
-
+    this.status= "Tarefa Pausada";
     let data = new Date();
     // if (this.tarefa.id === indice) {
       this.limpaSetInteval();
-      this.tarefaService.registraTempoTarefaAtiva((data.getHours()),(data.getMinutes()),(data.getSeconds()),this.tarefa.id);
+      setTimeout(()=>{this.tarefaService.registraTempoTarefaAtiva((data.getHours()),(data.getMinutes()),(data.getSeconds()),this.tarefa.id)},100);
 
     // }
 

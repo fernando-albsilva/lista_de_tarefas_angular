@@ -46,6 +46,9 @@ table {
 .height-10{
   height: 10%;
 }
+.width-270px{
+    width: 270px;
+}
 ::-webkit-scrollbar {
     width: 5px;
 }
@@ -79,9 +82,11 @@ tr{
     height: 25px!important;
     line-height: 25px!important;
     padding: 0px!important;
-    color:#5c6bbf!important;
+    // color:#5c6bbf!important;
   }
 }
+
+
 .modal-info{
   position: absolute;
   top: 30%;
@@ -125,7 +130,7 @@ tr{
 
 
 .green{
-color:#4DB6AC;
+color:#4DB6AC!important;
 }
 
 .yellow{

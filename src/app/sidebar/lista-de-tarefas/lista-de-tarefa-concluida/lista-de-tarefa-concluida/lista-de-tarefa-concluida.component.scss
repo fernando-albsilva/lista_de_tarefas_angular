@@ -8,6 +8,9 @@
 .width-100{
     width:100%; 
 }
+.height-80{
+    height: 80%;
+}
 .width-80{
     width:80%; 
 }
@@ -19,15 +22,10 @@
     flex-direction: column;
     flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
 }
-.elipse{
-    overflow:hidden;
-    text-overflow:ellipsis;
-    white-space: nowrap;
-}
-.height-22px{
-    max-height: 22px;
+.gap-10{
+    gap:10px;
 }
 
 .card-title{
@@ -36,8 +34,13 @@
     font-weight: 500;
 }
 
-.card-text{
-    font-size: 0.8rem;
-    font-weight: 400;
-    color: #5C6BBF;
+// .card-text{
+//     font-size: 0.8rem;
+//     font-weight: 400;
+//     color: #5C6BBF;
+//     border-bottom: 0.5px solid #5C6BBF;
+// }
+
+.card-table{
+    width: 90%;
 }

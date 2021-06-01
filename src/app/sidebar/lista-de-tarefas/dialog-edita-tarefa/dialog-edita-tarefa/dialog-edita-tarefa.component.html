@@ -1,0 +1,49 @@
+<form [formGroup]="tarefaForm" class="height-100 width-100 flex-column" (submit)="onSubmit()">
+    <span class="title">Edição de tarefa</span>
+
+    <div class="flex-row width-100 border">
+        <span class="text width-45">Prioridade: {{tarefa_prioridade}}</span>
+        <span class="text width-45">
+            <mat-form-field class="width-100">
+                <mat-label class="text">Nova Prioridade: </mat-label>
+                <input formControlName="prioridadeTarefa" matInput name="prioridadeTarefa" placeholder="Ex. 1"
+                    type="number">
+
+            </mat-form-field>
+        </span>
+    </div>
+
+    <div class="flex-row width-100 border">
+        <span class="text width-45">Nome tarefa: {{tarefa_nome}} </span>
+        <span class="text width-45">
+            <mat-form-field class="width-100">
+                <mat-label class="text">Novo Nome Tarefa:</mat-label>
+                <input formControlName="nomeTarefa" matInput placeholder="Ex. Realizar cálculo " name="nomeTarefa"
+                    maxlength="250">
+            </mat-form-field>
+        </span>
+    </div>
+
+    <div class="flex-row width-100 border">
+        <span class="text width-45">Descrição tarefa: {{tarefa_descricao}} </span>
+        <span class="text width-45">
+            <mat-form-field class="width-100">
+                <mat-label class="text">Nova Descrição: </mat-label>
+                <input formControlName="descricaoTarefa" matInput placeholder="Ex. preencher campos das ... "
+                    name="descricaoTarefa" maxlength="600">
+            </mat-form-field>
+        </span>
+    </div>
+    <div class="flex-row width-100 ">
+        <mat-icon class="icone material-icons-outlined purple height-10" matTooltip="Voltar"
+            (click)="enviaEventoFechaDialog()">
+            reply
+        </mat-icon>
+        <button type="submit" class="flex-row btn-submit">
+            <mat-icon class="icone material-icons-outlined purple height-10" matTooltip="Voltar">
+                edit
+            </mat-icon>
+        </button>
+
+    </div>
+</form>

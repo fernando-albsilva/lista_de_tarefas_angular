@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EventEmitter } from '@angular/core';
 import { TarefaModel } from '../model/TarefaModel';
+import { MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER } from '@angular/material/tooltip';
 
 
 @Injectable({ providedIn: 'root' })
@@ -14,9 +15,12 @@ export class TarefaService {
     emitirTarefaPendente = new EventEmitter<any>();
     emitirTarefaConcluida = new EventEmitter<any>();
     emitirTarefaIniciada = new EventEmitter<any>();
+    emitirTarefaFinalizada = new EventEmitter<any>();
+    emitirTarefaEdicaoModal = new EventEmitter<any>();
 
     private static _tarefaId: string = '0';
     private _listaDeTarefas: TarefaModel[] = [];
+    private _listaDeTarefasConcluidas: TarefaModel[] = [];
 
 
 
@@ -26,19 +30,18 @@ export class TarefaService {
 
         return this._listaDeTarefas;
     }
-  
+
+    get listaDeTarefasConcluida(): TarefaModel[] {
+
+        return this._listaDeTarefasConcluidas;
+    }
+
     adicionaTarefa(tarefa: any): void {
 
         tarefa.id = this.adicionaTarefaId();
         this._listaDeTarefas.push(tarefa);
-        
+
         this.emitirTarefaAdicionada.emit(tarefa);
-        // this.emitirTarefaAdicionada.emit({
-        //     nome_tarefa: (tarefa.nomeTarefa),
-        //     prioridade: (tarefa.prioridade),
-        //     descricao: (tarefa.descricao),
-        //     indice: (tarefa.id)
-        // });
         this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
         this.mostraMensagem();
 
@@ -71,7 +74,7 @@ export class TarefaService {
             console.log("indice do elemento da lista: " + element._id);
             console.log(element._id !== indice);
 
-            if(element._id === indice) {this.emitirTarefaDeletada.emit(element);}
+            if (element._id === indice) { this.emitirTarefaDeletada.emit(element); }
             // this.emitirTarefaDeletada.emit();
             return element._id !== indice;
         });
@@ -104,18 +107,18 @@ export class TarefaService {
 
     incluiHoraMinSegInicio(tarefa: TarefaModel) {
         let data = new Date();
-        if ( (tarefa.horaIncio === 0) && (tarefa.minutoInicio === 0) && (tarefa.segundoInicio === 0) ){
+        if ((tarefa.horaIncio === 0) && (tarefa.minutoInicio === 0) && (tarefa.segundoInicio === 0)) {
             tarefa.horaIncio = data.getHours();
             tarefa.minutoInicio = data.getMinutes();
             tarefa.segundoInicio = data.getSeconds();
-        }else{
+        } else {
 
 
-            tarefa.horaIncio = data.getHours()- (tarefa.horaFim - tarefa.horaIncio);
+            tarefa.horaIncio = data.getHours() - (tarefa.horaFim - tarefa.horaIncio);
             tarefa.minutoInicio = data.getMinutes() - (tarefa.minutoFim - tarefa.minutoInicio);
             tarefa.segundoInicio = data.getSeconds() - (tarefa.segundoFim - tarefa.segundoInicio);
         }
-      
+
     }
 
     registraTempoTarefaAtiva(hora: number, minuto: number, segundo: number, indiceTarefa: string) {
@@ -124,14 +127,62 @@ export class TarefaService {
                 // elemento.horaIncio = hora;
                 // elemento.minutoInicio = minuto;
                 // elemento.segundoInicio = segundo;
-               
+
                 elemento.horaFim = hora;
                 elemento.minutoFim = minuto;
                 elemento.segundoFim = segundo;
             }
-            
+
         });
 
+    }
 
+    emiteEventoAtualizaModalEdicao(indiceTarefaEdicao: string) {
+        
+        this.emitirTarefaEdicaoModal.emit(indiceTarefaEdicao);
+    }
+
+    retornaTarefa(indiceTarefa: String): TarefaModel {
+        let tarefaEdicao: TarefaModel = new TarefaModel();
+
+        this.listaDeTarefas.map((tarefa) => {
+            if (tarefa.id === indiceTarefa) {
+                tarefaEdicao = tarefa;
+            }
+        });
+
+        return tarefaEdicao;
+    }
+  
+    editaTarefa(tarefaNova: TarefaModel) {
+        this._listaDeTarefas=this.listaDeTarefas.map((tarefa) => {
+                                if (tarefa.id === tarefaNova.id) 
+                                {
+                                    return tarefaNova;
+                                }
+                                else
+                                {
+                                    return tarefa;
+                                }
+                            });
+        this.emitirTarefaAdicionada.emit();
+    }
+
+    finalizarTarefa(indiceTarefa:string){
+     
+        this._listaDeTarefas= this.listaDeTarefas.filter((tarefa)=>{
+            if (tarefa.id === indiceTarefa)
+            {
+               
+                this._listaDeTarefasConcluidas.push(tarefa);
+                return false;
+            }
+            else{
+                return true;
+            }
+        });
+        
+        this.emitirTarefaFinalizada.emit();
+        
     }
 }
