@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TarefaModel } from 'src/app/model/TarefaModel';
 import { TarefaService } from 'src/app/services/tarefa.service';
 
 @Component({
@@ -39,13 +40,22 @@ export class CardHeaderTarefaComponent implements OnInit {
     this.escutaTarefaPendente();
     this.escutaTarefaAtiva();
     this.escutaTarefaPausada();
-    this.escutaTarefaDeletada()
+    this.escutaTarefaDeletada();
+    this.escutaTarefaFinalizada();
+    this.escutaTarefaFinalizadaDeletada();
   }
 
 
   escutaTarefaPendente() {
     this.tarefaService.emitirTarefaPendente.subscribe(quantidadeTarefa => {
       this.info_1 = "Tarefas Pendentes: " + quantidadeTarefa.toString();
+    });
+  }
+  
+  escutaTarefaFinalizada() {
+
+    this.tarefaService.emitirTarefaFinalizada.subscribe(() => {
+      this.info_2 = "Tarefas Concluidas: " + this.tarefaService.listaDeTarefasConcluida.length;
     });
   }
 
@@ -63,6 +73,13 @@ export class CardHeaderTarefaComponent implements OnInit {
     this.tarefaService.emitirTarefaDeletada.subscribe( () => {
       this.info_3 = "Tarefas Ativas: 0";
     });
+  }
+  
+  escutaTarefaFinalizadaDeletada(){
+    this.tarefaService.emitirTarefaConcluidaDeletada.subscribe( () => {
+      this.info_2 = "Tarefas Concluidas: " + this.tarefaService.listaDeTarefasConcluida.length;
+    });
+    
   }
 
 }

@@ -12,6 +12,7 @@ export class TarefaService {
     emitirTarefaAdicionada = new EventEmitter<any>();
     emitirTarefaPausada = new EventEmitter<any>();
     emitirTarefaDeletada = new EventEmitter<any>();
+    emitirTarefaConcluidaDeletada = new EventEmitter<any>();
     emitirTarefaPendente = new EventEmitter<any>();
     emitirTarefaConcluida = new EventEmitter<any>();
     emitirTarefaIniciada = new EventEmitter<any>();
@@ -80,6 +81,25 @@ export class TarefaService {
         });
         console.log("listaNova:" + this._listaDeTarefas);
         this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
+    }
+  
+    deleteTarefaConcluida(indice: string) {
+
+        this._listaDeTarefasConcluidas = this._listaDeTarefasConcluidas.filter((element: any) => {
+
+            console.log("indice a ser excluido:" + indice);
+            // console.log(el);
+            console.log("indice do elemento da lista: " + element._id);
+            console.log(element._id !== indice);
+
+            if (element._id === indice) { 
+                // this.emitirTarefaConcluida.emit();
+            }
+            // this.emitirTarefaDeletada.emit();
+            return element._id !== indice;
+        });
+        this.emitirTarefaConcluidaDeletada.emit();
+      
     }
 
     iniciarTarefa(indice: string) {
@@ -176,7 +196,10 @@ export class TarefaService {
             {
                
                 this._listaDeTarefasConcluidas.push(tarefa);
-                setTimeout(()=>{this.emitirTarefaFinalizada.emit(tarefa);},100);
+                setTimeout(()=>{
+                    this.emitirTarefaFinalizada.emit(tarefa);
+                    this.emitirTarefaPendente.emit(this.listaDeTarefas.length);
+                },100);
                 return false;
             }
             else{

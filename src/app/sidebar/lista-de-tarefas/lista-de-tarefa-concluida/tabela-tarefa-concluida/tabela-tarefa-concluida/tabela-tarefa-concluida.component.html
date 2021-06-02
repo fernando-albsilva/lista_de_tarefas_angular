@@ -15,18 +15,25 @@
             </td>
         </ng-container>
 
+         <!-- duracao Column -->
+        <ng-container matColumnDef="duracao">
+            <th mat-header-cell *matHeaderCellDef> duração </th>
+            <td mat-cell *matCellDef="let element"> <span class="width-prioridade green"> {{element.duracao}}</span>
+            </td>
+        </ng-container>
+
         <!-- descricao Column -->
         <ng-container matColumnDef="descricao">
             <th mat-header-cell *matHeaderCellDef> </th>
 
-            <td mat-cell *matCellDef="let element" class="width-270px">
+            <td mat-cell *matCellDef="let element" class="width-150px">
                 <!-- <span> {{element.descricao}} </span> -->
                 <span class="flex-row flex-end gap-10">
                     <mat-icon class="icone material-icons-outlined blue" matTooltip="Informações da Tarefa"
                         (click)="mostrarInformacaoTarefa($event,element)">
                         info
                     </mat-icon>
-                    <mat-icon class="icone material-icons-outlined green" matTooltip="Iniciar Tarefa">
+                    <mat-icon class="material-icons-outlined green iconeDisable" matTooltip="Tarefa Finalizada">
                         done
                     </mat-icon>
 

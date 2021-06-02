@@ -78,6 +78,7 @@ export class CardInformacoesComponent implements OnInit {
   setDataInfoCard(status:string) {
     this.status = status;
     this.nome_tarefa = this.tarefa.nomeTarefa;
+    this.duracao_tarefa = this.tarefa.duracao;
     this.descricao_Tarefa = this.tarefa.descricao;
   }
 

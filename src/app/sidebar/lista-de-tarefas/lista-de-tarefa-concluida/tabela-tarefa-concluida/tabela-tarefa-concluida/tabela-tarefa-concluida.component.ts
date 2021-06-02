@@ -18,7 +18,7 @@ export class TabelaTarefaConcluidaComponent implements OnInit {
   //TODO resolver como chamar o metodo na classe filho para atualizar o modal de edicao de tarefa
   // @ViewChild(DialogEditaTarefaComponent)  child:DialogEditaTarefaComponent;
 
-  displayedColumns: string[] = ['nome_tarefa', 'prioridade', 'descricao'];
+  displayedColumns: string[] = ['nome_tarefa', 'prioridade', 'duracao', 'descricao'];
   dataSource: any = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   modalInfo : boolean = false;
   dialogEdicao : boolean = false;
@@ -42,6 +42,14 @@ export class TabelaTarefaConcluidaComponent implements OnInit {
     );
   }
 
+  escutaTarefaConcluidaDeletada(){
+    this.tarefaService.emitirTarefaConcluidaDeletada.subscribe(() => {
+      this.recarregaLista();
+    }
+  );
+
+  }
+  
 
   recarregaLista() {
     // this.dataTable.push(tarefaCriada);
@@ -52,7 +60,8 @@ export class TabelaTarefaConcluidaComponent implements OnInit {
         nome_tarefa: (elemento.nomeTarefa),
         prioridade: (elemento.prioridade), 
         descricao: (elemento.descricao), 
-        indice: (elemento.id) 
+        indice: (elemento.id),
+        duracao: (elemento.duracao) 
         });
       });
     this.ordenaListaPorPrioridade();
@@ -62,7 +71,7 @@ export class TabelaTarefaConcluidaComponent implements OnInit {
 
 
   deleteTarefa($event: Event, indice: string) {
-    // this.tarefaService.deleteTarefaConcluida(indice);
+    this.tarefaService.deleteTarefaConcluida(indice);
     this.recarregaLista();
   }
 
