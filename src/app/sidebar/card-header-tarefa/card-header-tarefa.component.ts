@@ -22,7 +22,7 @@ export class CardHeaderTarefaComponent implements OnInit {
   constructor(private tarefaService: TarefaService) {
     this.escutaTarefaPendente();
   }
-aaa
+
   ngOnInit(): void {
     this.info_1 = this.info[0];
     this.info_2 = this.info[1];
