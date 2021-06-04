@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
-import { TarefaModel } from 'src/app/model/TarefaModel';
+
 import { TarefaService } from 'src/app/services/tarefa.service';
 
 
@@ -14,10 +14,6 @@ export class TabelaTarefaConcluidaComponent implements OnInit {
 
 
   dataTable: any[] = [];
-
-  //TODO resolver como chamar o metodo na classe filho para atualizar o modal de edicao de tarefa
-  // @ViewChild(DialogEditaTarefaComponent)  child:DialogEditaTarefaComponent;
-
   displayedColumns: string[] = ['nome_tarefa', 'prioridade', 'duracao', 'descricao'];
   dataSource: any = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   modalInfo : boolean = false;
@@ -52,8 +48,7 @@ export class TabelaTarefaConcluidaComponent implements OnInit {
   
 
   recarregaLista() {
-    // this.dataTable.push(tarefaCriada);
-
+    
     this.dataTable=[];
     this.tarefaService.listaDeTarefasConcluida.map((elemento) => {
       this.dataTable.push({

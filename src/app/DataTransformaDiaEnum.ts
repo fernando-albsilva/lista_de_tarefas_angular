@@ -5,5 +5,5 @@ export enum DataTransformaDia {
     "Quarta - Feira" = 3,
     "Quinta - Feira" = 4,
     "Sexta - Feira" = 5,
-    Sábado = 6,
+    "Sábado" = 6,
 }

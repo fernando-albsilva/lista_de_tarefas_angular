@@ -22,17 +22,7 @@ export class SideBarComponent implements OnInit{
     info_classe_green_bg: string[] = [];
   
     constructor(private tarefaService:TarefaService){
-        // private dialogEdita : DialogEditaTarefaComponent) {  
-        // this.tarefaService.emitirTarefaPendente.subscribe(quantidadeTarefa => {
-        //     console.log("recebeu tarefa");
-        //     console.log(quantidadeTarefa);
-        //     this.tarefaPendente= quantidadeTarefa.toString();
-        //     console.log("tarefaPendente"+this.tarefaPendente);
-        //     this.info_pai_card_2=[];
-        //     this._reload=false;
-        //     this.atualizaCard();
-        //     setTimeout(()=>this._reload=true,10);
-        // });
+      
      }
 
     ngOnInit(): void{
@@ -50,7 +40,6 @@ export class SideBarComponent implements OnInit{
             DataTransformaDia[data.getDay()]
             );
 
-        console.log(this.info_pai_card_2);
         this.info_pai_card_2.push(
             "Tarefas Pendentes: "+ this.tarefaPendente,
             "Tarefas Concluidas: " + this.tarefaConcluida,

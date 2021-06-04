@@ -18,7 +18,6 @@ export class CardInformacoesComponent implements OnInit {
   totalMinuto: string='';
   totalSegundo: string='';
   textColor:string= '';
-  // statusId:string= '';
 
   constructor(
     private tarefaService: TarefaService,
@@ -30,7 +29,6 @@ export class CardInformacoesComponent implements OnInit {
     this.escutaTarefaPausada();
     this.escutaTarefaDeletada();
     this.escutaTarefaFinalizada();
-    this.escutaTarefaEditada();
   }
 
   escutaTarefaIniciada() {
@@ -53,17 +51,6 @@ export class CardInformacoesComponent implements OnInit {
       () => {
         this.pausaContagemTempoTarefa();
       });
-
-  }
-
-  escutaTarefaEditada() {
-    //TODO aqui emitir um snack bar com tarefa Editada
-    // this.tarefaService.emitirTarefaEditada.subscribe(
-    //   () => {
-    //     setTimeout ( ()=>{
-    //       this.setDataInfoCard("Tarefa Editada");
-    //     },300);
-    //   });
 
   }
 
@@ -123,15 +110,11 @@ export class CardInformacoesComponent implements OnInit {
     totalSegDuracao = totalHoraMinSeg - totalHoraMinSegTarefa;
 
     this.totalHora = (Math.trunc(totalSegDuracao / 3600)).toString();
-    console.log("calculoHora: " +totalSegDuracao / 3600 )
 
 
     this.totalMinuto = (Math.trunc((totalSegDuracao % 3600) / 60)).toString();
-    console.log("calculoMin: " +((totalSegDuracao % 3600) / 60))
 
     this.totalSegundo = (Math.trunc((totalSegDuracao % 3600) % 60)).toString();
-    console.log("calculoSeg" +((totalSegDuracao % 3600) % 60))
-    console.log("-----------------------------");
 
     if (parseInt(this.totalHora) <= 9) { this.totalHora = "0" + this.totalHora }
     if (parseInt(this.totalMinuto) <= 9) { this.totalMinuto = "0" + this.totalMinuto }

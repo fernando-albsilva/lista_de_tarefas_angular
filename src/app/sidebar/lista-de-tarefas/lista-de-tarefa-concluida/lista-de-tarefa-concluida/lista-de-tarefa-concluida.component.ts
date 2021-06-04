@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-lista-de-tarefa-concluida',
   templateUrl: './lista-de-tarefa-concluida.component.html',
   styleUrls: ['./lista-de-tarefa-concluida.component.scss']
 })
-export class ListaDeTarefaConcluidaComponent implements OnInit {
+export class ListaDeTarefaConcluidaComponent  {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

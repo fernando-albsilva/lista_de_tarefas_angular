@@ -23,20 +23,21 @@ export class CardAdicionaTarefaComponent implements OnInit {
   durationInSeconds:number = 500;
   mesageminfoBox:string = '';
   boxColorClass:string = '';
+  
   constructor(
     private tarefaService:TarefaService,
     private formBuilder:FormBuilder)
     {
-
       this.tarefaForm = this.formBuilder.group({
           nomeTarefa:['',  Validators.compose([Validators.required,  Validators.maxLength(250)])],
           prioridadeTarefa:['', Validators.required],
           descricaoTarefa:['',Validators.required]
       });
-
-   }
-
-  ngOnInit(): void {
+      
+    }
+    
+    ngOnInit(): void {
+    
     
   }
 

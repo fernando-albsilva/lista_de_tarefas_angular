@@ -12,10 +12,6 @@ import { DialogEditaTarefaComponent } from '../lista-de-tarefas/dialog-edita-tar
 export class TabelaTarefaAdicionadaComponent implements OnInit {
 
   dataTable: any[] = [];
-
-  //TODO resolver como chamar o metodo na classe filho para atualizar o modal de edicao de tarefa
-  // @ViewChild(DialogEditaTarefaComponent)  child:DialogEditaTarefaComponent;
-
   displayedColumns: string[] = ['nome_tarefa', 'prioridade', 'descricao'];
   dataSource: any = new MatTableDataSource<TarefaModelInterface>(this.dataTable);
   modalInfo : boolean = false;
@@ -61,7 +57,6 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
 
 
   recarregaLista() {
-    // this.dataTable.push(tarefaCriada);
 
     this.dataTable=[];
     this.tarefaService.listaDeTarefas.map((elemento) => {

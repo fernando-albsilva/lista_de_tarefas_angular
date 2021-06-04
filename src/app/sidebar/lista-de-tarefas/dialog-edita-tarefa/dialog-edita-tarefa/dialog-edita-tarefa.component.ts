@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TarefaModel } from 'src/app/model/TarefaModel';
 import { TarefaService } from 'src/app/services/tarefa.service';
-import { ReactiveFormsModule, Validators } from '@angular/forms';
+import { Validators } from '@angular/forms';
 import { EventEmitter } from '@angular/core';
 
 @Component({
@@ -43,14 +43,12 @@ export class DialogEditaTarefaComponent implements OnInit {
    }
 
     ngOnInit(): void {
-      console.log("this.indiceTarefaEdicao");
-      console.log(this.indiceTarefaEdicao);
+     
       this.tarefaService.emitirTarefaEdicaoModal.subscribe((indiceTarefa:string)=>{
         this.atualizaDialog(indiceTarefa);
       });
     }
 
-    
    onSubmit(){
 
     this.tarefaNova.nomeTarefa=this.tarefaForm.value.nomeTarefa;
@@ -75,19 +73,14 @@ export class DialogEditaTarefaComponent implements OnInit {
           this.tarefaNova.descricao='';
 
       },100);
-
       this.fechaDialogInfoBox.emit();
-      // this.fechaDialog.emit();
+
     }else{
 
       this.fechaDialog.emit();
     }
 
-
-    
-
   }
-
 
   enviaEventoFechaDialog():void{
     this.fechaDialog.emit();
