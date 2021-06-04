@@ -5,15 +5,15 @@
         <span>Duração Jornada de Trabalho: </span> <span>{{duracao_jornada}} </span>
     </span>
     <span class="width-80 flex-row between">
-        <button mat-flat-button class="btn-green">Iniciar Jornada</button>
-        <button mat-flat-button class="btn-green-yellow">Pausar Jornada</button>
+        <button disabled="{{btn_iniciarJornada}}" mat-flat-button class="btn-green" (click)="iniciarJornada()">Iniciar Jornada</button>
+        <button disabled="{{btn_finalizarJornada}}" mat-flat-button class="btn-green-yellow" (click)="finalizarJornada()">Finalizar Jornada</button>
     </span>
 
     <span class="width-80 card-text flex-row between">
-        <span> Duração Intervalo:</span> <span>{{duracao_jornada}} </span>
+        <span> Duração Intervalo:</span> <span>{{duracao_intervalo}} </span>
     </span>
     <span class="width-80 flex-row between">
-        <button mat-flat-button class="btn-green">Iniciar Intervalo</button>
-        <button mat-flat-button class="btn-green-yellow">Pausar Intervalo</button>
+        <button disabled="{{btn_iniciarIntervalo}}" mat-flat-button class="btn-green" (click)="iniciarIntervalo()">Iniciar Intervalo</button> 
+        <button disabled="{{btn_finalizarIntervalo}}" mat-flat-button class="btn-green-yellow" (click)="finalizarIntervalo()">Finalizar Intervalo</button>
     </span>
 </div>

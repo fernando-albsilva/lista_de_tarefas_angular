@@ -30,10 +30,13 @@ import { ModalInformacoesTarefa } from './sidebar/lista-de-tarefas/modal-lista-d
 import { TabelaTarefaAdicionadaComponent } from './sidebar/tabela-tarefa-adicionada/tabela-tarefa-adicionada.component';
 import { TarefaService } from './services/tarefa.service';
 import { TarefaModel } from './model/TarefaModel';
+import { JornadaService } from './services/jornada.service';
+import { JornadaModel } from './model/JornadaModel';
 import { DialogEditaTarefaComponent } from './sidebar/lista-de-tarefas/dialog-edita-tarefa/dialog-edita-tarefa/dialog-edita-tarefa.component';
 import { ListaDeTarefaConcluidaComponent } from './sidebar/lista-de-tarefas/lista-de-tarefa-concluida/lista-de-tarefa-concluida/lista-de-tarefa-concluida.component';
 import { TabelaTarefaConcluidaComponent } from './sidebar/lista-de-tarefas/lista-de-tarefa-concluida/tabela-tarefa-concluida/tabela-tarefa-concluida/tabela-tarefa-concluida.component';
 import { EventoInfoBoxComponent } from './evento-info-box/evento-info-box.component';
+
 
 
 
@@ -81,6 +84,8 @@ import { EventoInfoBoxComponent } from './evento-info-box/evento-info-box.compon
   providers: [
     TarefaService,
     TarefaModel,
+    JornadaService,
+    JornadaModel,
     FormBuilder
   ],
   bootstrap: [AppComponent]
