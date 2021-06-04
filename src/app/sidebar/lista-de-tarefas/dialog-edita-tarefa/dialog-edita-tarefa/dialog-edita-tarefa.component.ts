@@ -13,6 +13,8 @@ import { EventEmitter } from '@angular/core';
 export class DialogEditaTarefaComponent implements OnInit {
   
   @Output() fechaDialog = new EventEmitter<string>();
+  @Output() fechaDialogInfoBox = new EventEmitter<string>();
+  
 
   @Input() indiceTarefaEdicao:string = '';
  
@@ -24,6 +26,8 @@ export class DialogEditaTarefaComponent implements OnInit {
   tarefa_nome:string='';
   tarefa_prioridade:string='';
   tarefa_descricao:string='';
+
+  edicao:string="editou";
 
   constructor(
     private tarefaService:TarefaService,
@@ -71,8 +75,17 @@ export class DialogEditaTarefaComponent implements OnInit {
           this.tarefaNova.descricao='';
 
       },100);
+
+      this.fechaDialogInfoBox.emit();
+      // this.fechaDialog.emit();
+    }else{
+
+      this.fechaDialog.emit();
     }
-    this.fechaDialog.emit();
+
+
+    
+
   }
 
 

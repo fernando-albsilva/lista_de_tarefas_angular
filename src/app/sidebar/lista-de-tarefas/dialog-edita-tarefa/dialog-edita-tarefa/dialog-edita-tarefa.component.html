@@ -1,4 +1,4 @@
-<form [formGroup]="tarefaForm" class="height-100 width-100 flex-column" (submit)="onSubmit()">
+<form [formGroup]="tarefaForm" class="height-100 width-100 flex-column " (submit)="onSubmit()">
     <span class="title">Edição de tarefa</span>
 
     <div class="flex-row width-100 border">
@@ -40,10 +40,12 @@
             reply
         </mat-icon>
         <button type="submit" class="flex-row btn-submit">
-            <mat-icon class="icone material-icons-outlined purple height-10" matTooltip="Voltar">
+            <mat-icon class="icone material-icons-outlined purple height-10 orange" matTooltip="Editar">
                 edit
             </mat-icon>
         </button>
 
     </div>
 </form>
+
+

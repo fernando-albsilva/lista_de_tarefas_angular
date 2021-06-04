@@ -1,3 +1,28 @@
+@keyframes brilhoVerde {
+    from {color: #76d61b;}
+    to {
+        color: #4db6ac;
+        transform: scale(1.1);
+        text-shadow: 1px 1px 4px #b0b0b0;
+        // font-weight: bold;
+    }
+ 
+  }
+  
+  /* The element to apply the animation to */
+ .statusIniciada {
+ 
+    font-weight: bold;
+    color: #76d61b;
+    animation-name: brilhoVerde;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  
+ 
+
 .flex-row{
     display: flex;
     flex-direction: row;
@@ -40,4 +65,32 @@
     font-size: 0.8rem;
     font-weight: 400;
     color: #5C6BBF;
+}
+.card-text-status{
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #5C6BBF;
+}
+
+.green{
+color:#4DB6AC!important;
+}
+
+.yellow{
+    color:#CDD855;
+}
+
+.orange{
+    color:#F2A22C;
+}
+
+.purple{
+    color:#5c6bbf;
+}
+
+.red{
+    color:#EF7676;
+}
+.blue{
+    color:#3c78ff
 }

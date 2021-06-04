@@ -17,6 +17,8 @@ export class CardInformacoesComponent implements OnInit {
   totalHora: string='';
   totalMinuto: string='';
   totalSegundo: string='';
+  textColor:string= '';
+  // statusId:string= '';
 
   constructor(
     private tarefaService: TarefaService,
@@ -28,6 +30,7 @@ export class CardInformacoesComponent implements OnInit {
     this.escutaTarefaPausada();
     this.escutaTarefaDeletada();
     this.escutaTarefaFinalizada();
+    this.escutaTarefaEditada();
   }
 
   escutaTarefaIniciada() {
@@ -50,6 +53,17 @@ export class CardInformacoesComponent implements OnInit {
       () => {
         this.pausaContagemTempoTarefa();
       });
+
+  }
+
+  escutaTarefaEditada() {
+    //TODO aqui emitir um snack bar com tarefa Editada
+    // this.tarefaService.emitirTarefaEditada.subscribe(
+    //   () => {
+    //     setTimeout ( ()=>{
+    //       this.setDataInfoCard("Tarefa Editada");
+    //     },300);
+    //   });
 
   }
 
@@ -77,6 +91,11 @@ export class CardInformacoesComponent implements OnInit {
 
   setDataInfoCard(status:string) {
     this.status = status;
+    if (status === "Tarefa Finalizada") { this.textColor = "blue";}
+    if (status === "Tarefa Excluida")   { this.textColor = "red";}
+    if (status === "Tarefa Iniciada")   { this.textColor = "statusIniciada";}
+    if (status === "Tarefa Editada")   { this.textColor = "orange";}
+
     this.nome_tarefa = this.tarefa.nomeTarefa;
     this.duracao_tarefa = this.tarefa.duracao;
     this.descricao_Tarefa = this.tarefa.descricao;
@@ -127,6 +146,7 @@ export class CardInformacoesComponent implements OnInit {
   pausaContagemTempoTarefa() {
 
     this.status= "Tarefa Pausada";
+    this.textColor = "yellow";
     let data = new Date();
     // if (this.tarefa.id === indice) {
       this.limpaSetInteval();

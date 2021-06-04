@@ -77,6 +77,12 @@ mat-icon{
     background-color: rgba(214, 0, 0, 0.42);
 }
 
-
-// .mat-form-field-appearance-legacy .mat-form-field-underline
-
+.info-box-container{
+    height: 0px;
+    width: 0px;
+    position: fixed;
+    bottom: 80px;
+    left: calc(50% - 175px);
+    z-index: 8;
+    // top:0px;
+}

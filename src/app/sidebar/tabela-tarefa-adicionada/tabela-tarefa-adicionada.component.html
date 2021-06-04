@@ -71,7 +71,13 @@
 
 <ng-container *ngIf="dialogEdicao">
   <div class="flex-column-modal dialog-edicao">
-    <app-dialog-edita-tarefa [indiceTarefaEdicao]="indiceTarefaEdicao"  (fechaDialog)="fechaDialog('true','a')" class="width-90 height-90 flex-column">
+    <app-dialog-edita-tarefa [indiceTarefaEdicao]="indiceTarefaEdicao"  (fechaDialog)="fechaDialog('true','a')" (fechaDialogInfoBox)="fechaDialogInfoBox()" class="width-90 height-90 flex-column">
     </app-dialog-edita-tarefa>
   </div>
+</ng-container>
+
+
+<ng-container *ngIf="infoBox">
+  <app-evento-info-box [mesageminfoBox]="mesageminfoBox" class="info-box-container" >
+  </app-evento-info-box>
 </ng-container>

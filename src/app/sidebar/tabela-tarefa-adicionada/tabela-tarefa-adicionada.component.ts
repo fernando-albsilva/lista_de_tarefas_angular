@@ -24,6 +24,9 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   disable:any;
   indiceTarefaEdicao:string= '';
   carregaTarefaEdicao:string='';
+  infoBox:boolean=false;
+  mesageminfoBox:string='';
+  edicao:boolean=false;
 
   constructor(private tarefaService: TarefaService) { }
 
@@ -44,6 +47,14 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   escutaTarefaFinalizada(){
     this.tarefaService.emitirTarefaFinalizada.subscribe(() => {
         this.recarregaLista();
+       
+        this.mesageminfoBox="Tarefa Finalizada Com sucesso!";
+
+        this.infoBox=true;
+        
+        setTimeout( ()=> {
+          this.infoBox=false;
+        },2500);
       }
     );
   }
@@ -70,6 +81,15 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
   deleteTarefa($event: Event, indice: string) {
     this.tarefaService.deleteTarefa(indice);
     this.recarregaLista();
+
+    this.mesageminfoBox="Tarefa Deletada Com sucesso!";
+
+    this.infoBox=true;
+    
+    setTimeout( ()=> {
+      this.infoBox=false;
+    },2500);
+
   }
 
   
@@ -102,6 +122,11 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
       return 0;
     });
   }
+  // TODO verificar
+  fechaDialogInfoBox(){
+    this.edicao=true;
+    this.fechaDialog('true','a');
+  }
 
   fechaDialog(valor:string,indiceTarefaEdicao:string){
     if(valor === 'true')
@@ -111,6 +136,19 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
      this.tarefaService.emitirTarefaPausada.emit();
      this.dialogEdicao = true;
       setTimeout (()=>{this.tarefaService.emiteEventoAtualizaModalEdicao(indiceTarefaEdicao);},100);
+     
+    }
+    if(this.edicao === true)
+    {
+      this.mesageminfoBox="Tarefa Editada Com sucesso!";
+
+      this.infoBox=true;
+      
+      setTimeout( ()=> {
+        this.infoBox=false;
+      },2500);
+
+      this.edicao=false;
     }
     
   }

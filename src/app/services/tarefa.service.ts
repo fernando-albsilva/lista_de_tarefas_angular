@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+// import { MatSnackBar } from '@angular/material/snack-bar';
 import { EventEmitter } from '@angular/core';
 import { TarefaModel } from '../model/TarefaModel';
 import { MAT_TOOLTIP_SCROLL_STRATEGY_FACTORY_PROVIDER } from '@angular/material/tooltip';
@@ -16,6 +16,7 @@ export class TarefaService {
     emitirTarefaPendente = new EventEmitter<any>();
     emitirTarefaConcluida = new EventEmitter<any>();
     emitirTarefaIniciada = new EventEmitter<any>();
+    emitirTarefaEditada = new EventEmitter<any>();
     emitirTarefaFinalizada = new EventEmitter<any>();
     emitirTarefaEdicaoModal = new EventEmitter<any>();
 
@@ -24,8 +25,8 @@ export class TarefaService {
     private _listaDeTarefasConcluidas: TarefaModel[] = [];
 
 
-
-    constructor(private snackBar: MatSnackBar) { }
+    // private snackBar: MatSnackBar
+    constructor() { }
 
     get listaDeTarefas(): TarefaModel[] {
 
@@ -58,11 +59,11 @@ export class TarefaService {
 
     mostraMensagem(): void {
 
-        this.snackBar.open('Tarefa adicionada com sucesso!', '', {
-            duration: 2000,
-            horizontalPosition: "center",
-            verticalPosition: "bottom"
-        });
+        // this.snackBar.open('Tarefa adicionada com sucesso!', '', {
+        //     duration: 2000,
+        //     horizontalPosition: "center",
+        //     verticalPosition: "bottom"
+        // });
     }
 
 
@@ -187,6 +188,7 @@ export class TarefaService {
                                 }
                             });
         this.emitirTarefaAdicionada.emit();
+        this.emitirTarefaEditada.emit();
     }
 
     finalizarTarefa(indiceTarefa:string){

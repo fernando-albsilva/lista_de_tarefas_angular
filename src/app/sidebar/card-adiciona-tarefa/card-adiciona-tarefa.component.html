@@ -48,4 +48,7 @@
     </div>
 </form>
 
-<!-- (change)="adicionaPrioridade($event)" -->
+<ng-container *ngIf="infoBox">
+      <app-evento-info-box [mesageminfoBox]="mesageminfoBox" class="info-box-container" >
+      </app-evento-info-box>
+  </ng-container>

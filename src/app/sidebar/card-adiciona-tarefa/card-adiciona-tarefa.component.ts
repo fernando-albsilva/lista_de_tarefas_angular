@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
+
 import { FormGroup,FormBuilder} from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { TarefaModel } from 'src/app/model/TarefaModel';
 import { TarefaService } from 'src/app/services/tarefa.service';
-
 
 
 @Component({
@@ -18,12 +19,14 @@ export class CardAdicionaTarefaComponent implements OnInit {
 
   private tarefa:TarefaModel = new TarefaModel();
 
+  infoBox: boolean = false;
   tarefaForm: FormGroup;
-
+  durationInSeconds:number = 500;
+  mesageminfoBox:string = '';
   constructor(
     private tarefaService:TarefaService,
-    private formBuilder:FormBuilder
-    ) {
+    private formBuilder:FormBuilder)
+    {
 
       this.tarefaForm = this.formBuilder.group({
           nomeTarefa:['',  Validators.compose([Validators.required,  Validators.maxLength(250)])],
@@ -53,7 +56,19 @@ export class CardAdicionaTarefaComponent implements OnInit {
           this.tarefa.descricao='';
 
       },100);
+     
+      this.mesageminfoBox="Tarefa Adicionada Com sucesso!";
+
+      this.infoBox=true;
+      
+      setTimeout( ()=> {
+        this.infoBox=false;
+      },2500);
+
     }
+
+
+   
   }
 
 }
