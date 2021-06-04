@@ -9,6 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class EventoInfoBoxComponent implements OnInit {
   
   @Input() mesageminfoBox:string='';
+  @Input() boxColorClass:string='';
 
   constructor() { }
 

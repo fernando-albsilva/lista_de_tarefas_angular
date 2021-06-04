@@ -192,7 +192,7 @@ export class TarefaService {
     }
 
     finalizarTarefa(indiceTarefa:string){
-     //TODO o problema é que nao esta atualizando o tempo antes de executar o finalizar tarefa, verificar se algum componente esta sendo zerado antes de gravar os dados
+    
         this._listaDeTarefas= this.listaDeTarefas.filter((tarefa)=>{
             if (tarefa.id === indiceTarefa)
             {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ReactiveFormsModule, Validators } from '@angular/forms';
-
+import { Validators } from '@angular/forms';
 import { FormGroup,FormBuilder} from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { TarefaModel } from 'src/app/model/TarefaModel';
 import { TarefaService } from 'src/app/services/tarefa.service';
 
@@ -23,6 +22,7 @@ export class CardAdicionaTarefaComponent implements OnInit {
   tarefaForm: FormGroup;
   durationInSeconds:number = 500;
   mesageminfoBox:string = '';
+  boxColorClass:string = '';
   constructor(
     private tarefaService:TarefaService,
     private formBuilder:FormBuilder)
@@ -45,7 +45,7 @@ export class CardAdicionaTarefaComponent implements OnInit {
     this.tarefa.nomeTarefa=this.tarefaForm.value.nomeTarefa;
     this.tarefa.prioridade=this.tarefaForm.value.prioridadeTarefa;
     this.tarefa.descricao=this.tarefaForm.value.descricaoTarefa;
-    if((this.tarefa.nomeTarefa !== '') && (this.tarefa.prioridade !== '') && (this.tarefa.descricao !== '') )
+    if((this.tarefa.nomeTarefa !== '') && ( (this.tarefa.prioridade !== '') && (this.tarefa.prioridade !== null) ) && (this.tarefa.descricao !== '') )
     {
       
       this.tarefaService.adicionaTarefa(this.tarefa);
@@ -66,6 +66,22 @@ export class CardAdicionaTarefaComponent implements OnInit {
       },2500);
 
     }
+    else
+    {
+      this.mesageminfoBox="Campos devem estar preenchidos!";
+
+      this.boxColorClass='red';
+
+      this.infoBox=true;
+      
+      setTimeout( ()=> {
+        this.infoBox=false;
+        this.boxColorClass='';
+      },3000);
+
+    }
+    
+  
 
 
    

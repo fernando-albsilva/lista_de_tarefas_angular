@@ -122,7 +122,7 @@ export class TabelaTarefaAdicionadaComponent implements OnInit {
       return 0;
     });
   }
-  // TODO verificar
+
   fechaDialogInfoBox(){
     this.edicao=true;
     this.fechaDialog('true','a');
