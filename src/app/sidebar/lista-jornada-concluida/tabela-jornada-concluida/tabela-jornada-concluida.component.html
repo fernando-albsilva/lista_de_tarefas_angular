@@ -1,0 +1,57 @@
+<div class="heigth-230px flex-column width-100">
+<span class="card-title">Registros</span>
+<div class="tabela-container">
+    <table mat-table [dataSource]="dataSource" class="table-lista" *ngIf="dataTable.length > 0">
+
+        <!-- nome_tarefa Column -->
+        <ng-container matColumnDef="tipo_jornada">
+            <th mat-header-cell *matHeaderCellDef class="no-padding"> Tipo </th>
+            <td mat-cell *matCellDef="let element" class="green"><span
+                    class="heigth-25px"> {{element.tipo_jornada}}</span> </td>
+        </ng-container>
+
+        <!-- prioridade Column -->
+        <ng-container matColumnDef="registro_jornada">
+            <th mat-header-cell *matHeaderCellDef> Registro </th>
+            <td mat-cell *matCellDef="let element" class="width-40px" >
+                <span class="width-prioridade green" > {{element.registro_jornada}}</span>
+                <!-- <span class="width-prioridade green" *ngIf="!element.registro_jornada"> Inicio</span> -->
+            </td>
+        </ng-container>
+        
+        <!-- descricao Column -->
+        <ng-container matColumnDef="data">
+            <th mat-header-cell *matHeaderCellDef> Data </th>
+            <td mat-cell *matCellDef="let element" class="green"> <span class="green"> {{element.data}}</span>
+            </td>
+        </ng-container>
+
+         <!-- duracao Column -->
+         <ng-container matColumnDef="horario_jornada">
+             <th mat-header-cell *matHeaderCellDef> Horário </th>
+             <td mat-cell *matCellDef="let element" > <span class="green"> {{element.horario_jornada}}</span>
+             </td>
+         </ng-container>
+         
+         
+        <!-- descricao Column -->
+        <ng-container matColumnDef="botoes">
+            <th mat-header-cell *matHeaderCellDef> </th>
+
+            <td mat-cell *matCellDef="let element" class="">
+               
+                <span class="flex-row flex-end">
+                    
+                    <mat-icon class="icone material-icons-outlined red" matTooltip="Excluir Jornada" (click)="deletaRegistro(element.indice)">delete_forever</mat-icon>
+
+                </span> 
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row class="sticky" *matHeaderRowDef="displayedColumns" class="flex-row" ></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" class="flex-row gap-10 heigth-25px"></tr>
+    </table>
+</div>
+
+</div>

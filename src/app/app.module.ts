@@ -36,6 +36,7 @@ import { DialogEditaTarefaComponent } from './sidebar/lista-de-tarefas/dialog-ed
 import { ListaDeTarefaConcluidaComponent } from './sidebar/lista-de-tarefas/lista-de-tarefa-concluida/lista-de-tarefa-concluida/lista-de-tarefa-concluida.component';
 import { TabelaTarefaConcluidaComponent } from './sidebar/lista-de-tarefas/lista-de-tarefa-concluida/tabela-tarefa-concluida/tabela-tarefa-concluida/tabela-tarefa-concluida.component';
 import { EventoInfoBoxComponent } from './evento-info-box/evento-info-box.component';
+import { TabelaJornadaConcluida } from './sidebar/lista-jornada-concluida/tabela-jornada-concluida/tabela-jornada-concluida.component';
 
 
 
@@ -59,7 +60,8 @@ import { EventoInfoBoxComponent } from './evento-info-box/evento-info-box.compon
     DialogEditaTarefaComponent,
     ListaDeTarefaConcluidaComponent,
     TabelaTarefaConcluidaComponent,
-    EventoInfoBoxComponent
+    EventoInfoBoxComponent,
+    TabelaJornadaConcluida
   ],
   imports: [
     BrowserModule,

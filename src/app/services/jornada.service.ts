@@ -11,12 +11,18 @@ export class JornadaService {
     emitirJornadaFinalizada = new EventEmitter<any>();
     emitirIntervaloIniciado = new EventEmitter<any>();
     emitirIntervaloFinalizado = new EventEmitter<any>();
+    emitirRegistroDeletado = new EventEmitter<any>();
 
     private _listaDeJornada : JornadaModel[] = [];
     private _idJornada: number = 0;
 
     constructor() {  }
     
+    get listaJornada(): JornadaModel[]{
+        return this._listaDeJornada;
+    }
+
+
     iniciarJornada(jornada:JornadaModel){
         jornada.id = this.calculaIdJornada()
         this._listaDeJornada.push(jornada);
@@ -55,6 +61,23 @@ export class JornadaService {
         });
 
         this.emitirIntervaloFinalizado.emit(jornadaFinalizada.id);
+
+    }
+
+    deletaRegistro(registroId:string){
+        let teste:boolean = false;
+
+        this._listaDeJornada = this.listaJornada.filter((elemento:JornadaModel)=>{
+            if(elemento.id === registroId)  
+            {
+                teste=true;
+                return false;
+            }else{
+                return true;
+            }
+        });
+
+        if(teste) { this.emitirRegistroDeletado.emit();}
 
     }
 

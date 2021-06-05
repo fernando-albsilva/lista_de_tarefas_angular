@@ -137,19 +137,57 @@ export class CardAcoesComponent implements OnInit {
   }
   inicializaTempo(tipoJornada:string){
     let data = new Date();
+    let hora:string = '';
+    let minuto:string = '';
+    let segundo:string = '';
+
     this.jornada.tipo=tipoJornada;
     this.jornada.horaIncio = data.getHours();
     this.jornada.minutoInicio = data.getMinutes();
     this.jornada.segundoInicio = data.getSeconds();
+    this.jornada.data = data.getDate() + "/" +(data.getMonth()+1)+ "/" + data.getUTCFullYear();
+    
+    if (this.jornada.horaIncio <= 9) { hora = "0" + this.jornada.horaIncio }
+    else  { hora = this.jornada.horaIncio.toString(); }
+    
+    if (this.jornada.minutoInicio <= 9) { minuto = "0" + this.jornada.minutoInicio }
+    else  { minuto = this.jornada.minutoInicio.toString(); }
+
+    if (this.jornada.segundoInicio <= 9) { segundo = "0" + this.jornada.segundoInicio }
+    else  { segundo = this.jornada.segundoInicio.toString(); }
+    
+    // this.jornada.horarioCompletoInicio = this.jornada.horaIncio+":"+ this.jornada.minutoInicio+":"+this.jornada.segundoInicio;
+    this.jornada.horarioCompletoInicio = hora +":"+ minuto + ":" + segundo;
+
     return this.jornada;
   }
 
-
+//TODO 
+//2-  fazer o evento de deletar jornada da lista
+//3 - fazer evento de deletear intervalo da lista
   finalizarTempoJornada(){
     let data = new Date();
+    let hora:string = '';
+    let minuto:string = '';
+    let segundo:string = '';
+
     this.jornada.horaFim = data.getHours();
     this.jornada.minutoFim = data.getMinutes();
     this.jornada.segundoFim = data.getSeconds();
+
+    if (this.jornada.horaFim <= 9) { hora = "0" + this.jornada.horaFim }
+    else  { hora = this.jornada.horaFim.toString(); }
+    
+    if (this.jornada.minutoFim <= 9) { minuto = "0" + this.jornada.minutoFim }
+    else  { minuto = this.jornada.minutoFim.toString(); }
+
+    if (this.jornada.segundoFim <= 9) { segundo = "0" + this.jornada.segundoFim }
+    else  { segundo = this.jornada.segundoFim.toString(); }
+
+
+    // this.jornada.horarioCompletoFim = this.jornada.horaFim+":"+ this.jornada.minutoFim+":"+this.jornada.segundoFim;
+    this.jornada.horarioCompletoFim = hora + ":" + minuto + ":" + segundo;
+    this.jornada.finalizada=true;
     return this.jornada;
   }
 
@@ -165,7 +203,6 @@ export class CardAcoesComponent implements OnInit {
     totalSegDuracao = totalHoraMinSeg - totalHoraMinSegTarefa;
 
     this.totalHora = (Math.trunc(totalSegDuracao / 3600)).toString();
-
 
     this.totalMinuto = (Math.trunc((totalSegDuracao % 3600) / 60)).toString();
 
