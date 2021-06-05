@@ -37,6 +37,7 @@ import { ListaDeTarefaConcluidaComponent } from './sidebar/lista-de-tarefas/list
 import { TabelaTarefaConcluidaComponent } from './sidebar/lista-de-tarefas/lista-de-tarefa-concluida/tabela-tarefa-concluida/tabela-tarefa-concluida/tabela-tarefa-concluida.component';
 import { EventoInfoBoxComponent } from './evento-info-box/evento-info-box.component';
 import { TabelaJornadaConcluida } from './sidebar/lista-jornada-concluida/tabela-jornada-concluida/tabela-jornada-concluida.component';
+import { CardResumoComponent } from './sidebar/card-resumo/card-resumo.component';
 
 
 
@@ -61,7 +62,8 @@ import { TabelaJornadaConcluida } from './sidebar/lista-jornada-concluida/tabela
     ListaDeTarefaConcluidaComponent,
     TabelaTarefaConcluidaComponent,
     EventoInfoBoxComponent,
-    TabelaJornadaConcluida
+    TabelaJornadaConcluida,
+    CardResumoComponent
   ],
   imports: [
     BrowserModule,

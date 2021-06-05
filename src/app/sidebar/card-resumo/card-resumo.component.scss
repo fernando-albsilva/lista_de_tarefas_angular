@@ -1,0 +1,47 @@
+.card-container{
+    width: 80%;
+    height: 90%;
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-title{
+    color: #5C6BBF;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.card-text{
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: #5C6BBF;
+   
+}
+
+.wrap{
+ flex-wrap: wrap!important;
+}
+
+.start{
+    justify-content: flex-start;
+}
+
+.width-100{
+    width: 100%;
+}
+.height-200{
+    height: 200px
+}
