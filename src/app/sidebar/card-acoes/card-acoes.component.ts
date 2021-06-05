@@ -162,9 +162,6 @@ export class CardAcoesComponent implements OnInit {
     return this.jornada;
   }
 
-//TODO 
-//2-  fazer o evento de deletar jornada da lista
-//3 - fazer evento de deletear intervalo da lista
   finalizarTempoJornada(){
     let data = new Date();
     let hora:string = '';
