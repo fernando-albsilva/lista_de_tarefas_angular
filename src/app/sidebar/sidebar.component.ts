@@ -54,5 +54,13 @@ export class SideBarComponent implements OnInit{
 
         this.info_classe_green_bg.push("info_classe_green_bg");
     }
+
+    printPage(){
+        let w:any;
+        w=window.open();
+        w.document.write(document.getElementById('imprime')?.textContent);
+        w.print();
+        w.close();
+    }
 }
 

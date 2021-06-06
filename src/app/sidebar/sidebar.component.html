@@ -13,13 +13,13 @@
             </div>
             <div class="side-menu-button-container">
                 <mat-icon class="icon-side-menu material-icons-outlined">print</mat-icon>
-                <button class="side-menu-button" mat-flat-button>Imprimir</button>
+                <button class="side-menu-button" mat-flat-button (click)="printPage()">Imprimir</button>
             </div>
         </div>
     </mat-sidenav>
 
 
-    <mat-sidenav-content class="content-container">
+    <mat-sidenav-content id="imprime" class="content-container">
 
         <div class="first-menu-row-card-container">
             <app-card-header-data class="card-header-width" [icone]="icone_card_one" [info]="info_pai_card_1">
