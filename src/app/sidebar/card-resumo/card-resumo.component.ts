@@ -79,7 +79,7 @@ export class CardResumoComponent implements OnInit {
       }
     });
 
-      this.infoIntervalo = "Total Itervalos: " + TotalIntervalo;
+      this.infoIntervalo = "Total Intervalos: " + TotalIntervalo;
     
   }
 

@@ -17,7 +17,7 @@ export class ModalInformacoesTarefa implements OnInit {
   }
   
   ngOnInit(): void {
-    console.log(this.tarefa);
+   
     this.nome_tarefa=this.tarefa.nome_tarefa;
     this.prioridade_tarefa=this.tarefa.prioridade;
     this.descricao_Tarefa=this.tarefa.descricao;
