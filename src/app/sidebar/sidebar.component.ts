@@ -1,6 +1,11 @@
 import { Component, OnInit } from "@angular/core";
+// import jsPDF from 'jspdf';
+import jsPDF from 'jspdf';
 import { DataTransformaDia } from '../DataTransformaDiaEnum';
 import { DataTransformaMes } from '../DataTransformaMesEnum';
+import { JornadaModel } from '../model/JornadaModel';
+import { TarefaModel } from '../model/TarefaModel';
+import { JornadaService } from '../services/jornada.service';
 import { TarefaService } from '../services/tarefa.service';
  
 @Component({
@@ -21,7 +26,8 @@ export class SideBarComponent implements OnInit{
     info_pai_card_3: string[] = [];
     info_classe_green_bg: string[] = [];
   
-    constructor(private tarefaService:TarefaService){
+    constructor(private tarefaService:TarefaService,
+                private JornadaService: JornadaService){
       
      }
 
@@ -56,11 +62,80 @@ export class SideBarComponent implements OnInit{
     }
 
     printPage(){
-        let w:any;
-        w=window.open();
-        w.document.write(document.getElementById('imprime')?.textContent);
-        w.print();
-        w.close();
+        let data = new Date();
+        let listaJornada: JornadaModel[] = this.JornadaService.listaJornada;
+        let listaTarefaConcluida: TarefaModel[] = this.tarefaService.listaDeTarefasConcluida;
+        let alturaLinha:number=10;
+        
+        let doc = new jsPDF();
+       
+        doc.setLineWidth(0.2);
+
+        alturaLinha = this.preenchePdfJornada(doc,alturaLinha,listaJornada,data);
+        alturaLinha = this.preenchePdfTarefa(doc,alturaLinha,listaTarefaConcluida,data);
+       
+        window.open(doc.output('dataurl').toString(), '_blank')
+     
+
     }
+
+    createPdf(){
+    
+        let data = new Date();
+        let listaJornada: JornadaModel[] = this.JornadaService.listaJornada;
+        let listaTarefaConcluida: TarefaModel[] = this.tarefaService.listaDeTarefasConcluida;
+        let alturaLinha:number=10;
+        
+        let doc = new jsPDF();
+       
+        doc.setLineWidth(0.2); // seta espessura da linha
+        alturaLinha = this.preenchePdfJornada(doc,alturaLinha,listaJornada,data);
+        alturaLinha = this.preenchePdfTarefa(doc,alturaLinha,listaTarefaConcluida,data);
+
+        doc.save('a4.pdf');
+
+    }
+
+    preenchePdfJornada(doc:jsPDF,alturaLinha:number,listaJornada:JornadaModel[],data:Date):number{
+
+        doc.setFont("times", "bold"); // seta tipo e peso da fonte
+        doc.setFontSize(14); // seta o tamanho da fonte
+        doc.text('Resumo Jornada:', 10, alturaLinha); // seta o texto no arquivo
+        doc.setFont("times", "normal");
+        doc.setFontSize(10);
+        alturaLinha+=10;
+        listaJornada.map((elemento:JornadaModel)=>{
+            doc.text("Tipo: " + elemento.tipo + " - Registro: " + "Inicio" + " - Data: " + elemento.data + " - Horário: " + elemento.horarioCompletoInicio, 10, alturaLinha);
+            doc.line(10, alturaLinha+2, 200, alturaLinha+2);
+            alturaLinha+=10;
+            doc.text("Tipo: " + elemento.tipo + " - Registro: " + "Fim   " + " - Data: " + elemento.data + " - Horário: " + elemento.horarioCompletoFim, 10, alturaLinha);
+            // doc.setLineWidth(0.5);
+            doc.line(10, alturaLinha+2, 200, alturaLinha+2);
+            alturaLinha+=10;
+            
+        });
+        
+        alturaLinha+=20;
+        return alturaLinha;
+     
+    }
+
+    preenchePdfTarefa(doc:jsPDF,alturaLinha:number,listaTarefaConcluida:TarefaModel[],data:Date):number{
+            doc.setFont("times", "bold");
+            doc.setFontSize(14);
+            doc.text('Resumo Tarefa Concluida:', 10, alturaLinha);
+            doc.setFontSize(10);
+            doc.setFont("times", "normal");
+            alturaLinha+=10;
+            listaTarefaConcluida.map((elemento:TarefaModel)=>{
+                doc.text("Nome: "+ elemento.nomeTarefa + " - Prioridade: " + elemento.prioridade + "- Duração: " + elemento.duracao  , 10, alturaLinha);
+                doc.line(10, alturaLinha+2, 200, alturaLinha+2);
+                alturaLinha+=10;
+                
+            });
+            
+            alturaLinha+=20;
+            return alturaLinha;
+     }
 }
 
