@@ -92,7 +92,7 @@ export class SideBarComponent implements OnInit{
         alturaLinha = this.preenchePdfJornada(doc,alturaLinha,listaJornada,data);
         alturaLinha = this.preenchePdfTarefa(doc,alturaLinha,listaTarefaConcluida,data);
 
-        doc.save('a4.pdf');
+        doc.save('Relatorio.pdf');
 
     }
 
@@ -114,6 +114,7 @@ export class SideBarComponent implements OnInit{
             alturaLinha+=10;
             
         });
+        
         
         alturaLinha+=20;
         return alturaLinha;
