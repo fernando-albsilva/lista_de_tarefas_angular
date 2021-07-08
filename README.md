@@ -4,7 +4,7 @@
 
 ## Site : [Clique Aqui ](http://listadetarefas.com.br) ou Acesse pela ulr http://listadetarefas.com.br
 
-![texto_da_imagem](linkdaimagemdogithub)
+![Imagem HomePage](https://github.com/fernando-albsilva/lista_de_tarefas_angular/blob/master/imgReadme/Screenshot_3pq.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
