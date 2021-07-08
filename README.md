@@ -1,5 +1,10 @@
 # Listadetarefas
 
+## Um simples projeto open source com objetivo de aprender e praticar o Angular Framework
+
+## Site : [Clique Aqui ](http://listadetarefas.com.br) ou Acesse pela ulr http://listadetarefas.com.br
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
 ## Development server
