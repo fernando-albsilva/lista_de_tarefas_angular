@@ -6,6 +6,8 @@
 
 ![Imagem HomePage](https://github.com/fernando-albsilva/lista_de_tarefas_angular/blob/master/imgReadme/Screenshot_3pq.png)
 
+![Imagem HomePage](https://github.com/fernando-albsilva/lista_de_tarefas_angular/blob/master/imgReadme/Screenshot_4pq.png)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
 
 ## Development server
